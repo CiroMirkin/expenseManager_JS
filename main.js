@@ -25,7 +25,7 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
             date: new Date(Date.now()).toLocaleDateString()
         }
         defaultAccount.logAmount(newAmountForRegister)
-        defaultAccount.showAllAmounts()
+        defaultAccount.showIncomes()
         defaultAccount.showAccountValues()
         cleanInputs()
     }
@@ -54,7 +54,7 @@ amountListHTMLElement.addEventListener('click', async (e) => {
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
     }
-    defaultAccount.showAllAmounts()
+    defaultAccount.showIncomes()
     defaultAccount.showAccountValues()
 })
 
