@@ -4,14 +4,10 @@ class Account {
     constructor(name) {
         this.name = name
         this.allOfAmounts = []
-        this.incomes = []
-        this.expenses = []
     }
     firstInit() {
         console.info(`${this.name} account init`)
         this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
-        this.incomes = JSON.parse(localStorage.getItem(`incomes-${this.name}`)) || []
-        this.expenses = JSON.parse(localStorage.getItem(`expenses-${this.name}`)) || []
         if(!!this.allOfAmounts.length){
             this.showAllAmounts()
             this.showAccountValues()
@@ -19,46 +15,28 @@ class Account {
     }
     logAmount(amount) {
         this.allOfAmounts.push(amount)
-        if(amount.type == 'income'){
-            this.incomes.push(amount)
-        } 
-        if(amount.type == 'expense'){
-            this.expenses.push(amount)
-        }
         this.#saveAmounts()
     }
     editAmount({ amountId, newAmount }) {
         this.allOfAmounts = this.allOfAmounts.map(amount => {
             return amount.id == amountId ? {...newAmount, id: amountId} : amount
         })
-        this.incomes = this.incomes.map(amount => {
-            return amount.id == amountId ? {...newAmount, id: amountId} : amount
-        })
-        this.expenses = this.expenses.map(amount => {
-            return amount.id == amountId ? {...newAmount, id: amountId} : amount
-        })
         this.#saveAmounts()
     }
     deleteAmount(amountId) {
         this.allOfAmounts = this.allOfAmounts.filter(amount => amount.id !== amountId)
-        this.incomes = this.incomes.filter(amount => amount.id !== amountId)
-        this.expenses = this.expenses.filter(amount => amount.id !== amountId)
         this.#saveAmounts()
     }
     #saveAmounts(){
         localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
-        localStorage.setItem(`expenses-${this.name}`, JSON.stringify(this.expenses))
-        localStorage.setItem(`incomes-${this.name}`, JSON.stringify(this.incomes))
 
     }
     #getTotalIncome(){
         let totalIncome = 0
-        this.incomes.forEach(amount => totalIncome += amount.amount)
         return totalIncome
     }
     #getTotalExpenses() {
         let totalExpense = 0
-        this.expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
     #getTotalAmount(){
