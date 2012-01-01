@@ -1,7 +1,13 @@
 "use strict"
 export default class Categories {
     constructor() {
-        this.categories = [
+        this.incomeCategories = [
+            {
+                name: 'Hospital',
+                HTMLIcon: ''
+            }
+        ]
+        this.expenseCategories = [
             
         ]
     }
