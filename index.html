@@ -20,14 +20,15 @@
           <canvas id="chart"  width="270"></canvas>
         </div>      
       </div>
-      <form class="col card p-3">
+      <form id="newAmountForm" class="col card p-3">
         <input type="number" id="amountInput" class="form-control mb-2" placeholder="Amount...">
         <select id="amountTypeSelect" class="form-select mb-2">
             <option value="none">...</option>
             <option value="income">Income</option>
             <option value="expense">Expense</option>
         </select>
-        <input type="text" id="CommentInput" class="form-control mb-2" placeholder="Comment...">
+        <input type="text" id="commentInput" class="form-control mb-2" placeholder="Comment...">
+        <button type="submit" class="btn">Add</button>
       </form>
 	  </div>
     </main>

@@ -1,9 +1,7 @@
-import AccountView from './accountView.js'
 export default class Account {
     constructor(name) {
         this.name = name
         this.allOfAmounts = []
-        this.accountView = new AccountView()
     }
     // DAO or content DAO
     firstInit() {
