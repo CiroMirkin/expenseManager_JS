@@ -30,15 +30,21 @@ export default class Account {
         localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
 
     }
+    #getIncomes() {
+        return this.allOfAmounts.filter(amount => amount.type == 'income')
+    }
+    #getExpenses() {
+        return this.allOfAmounts.filter(amount => amount.type == 'expense')
+    }
     #getTotalIncome(){
         let totalIncome = 0
-        const income = this.allOfAmounts.filter(amount => amount.type == 'income')
+        const income = this.#getIncomes()
         income.forEach(amount => totalIncome += amount.amount)
         return totalIncome
     }
     #getTotalExpenses() {
         let totalExpense = 0
-        const expenses = this.allOfAmounts.filter(amount => amount.type == 'expense')
+        const expenses = this.#getExpenses()
         expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
