@@ -1,5 +1,7 @@
 "use strict"
 import Account from './account.js';
+import AccountView from './accountView.js' 
+import AccountDAO from './accountDAO.js'
 
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
