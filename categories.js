@@ -11,6 +11,14 @@ export default class Categories {
 
         ]
     }
+    getIncomeCategorie(name) {
+        const categorie = this.incomeCategories.filter(incomeCategorie => incomeCategorie.name == name)
+        return categorie[0]
+    }
+    getExpenseCategorie(name) {
+        const categorie = this.expenseCategories.filter(expenseCategorie => expenseCategorie.name == name)
+        return categorie[0]
+    }
     getSelectInputOfIncomeCategories() {
         return `
             <select id="amountCategorieSelect" class="form-select mb-2">
