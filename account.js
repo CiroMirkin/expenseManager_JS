@@ -3,20 +3,6 @@ export default class Account {
         this.name = name
         this.allOfAmounts = []
     }
-    // DAO or content DAO
-    firstInit() {
-        console.info(`${this.name} account init`)
-        this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
-        if(!!this.allOfAmounts.length){
-            this.showIncomes()
-            this.showExpenses()
-            this.showAccountValue()
-            this.showChartTotal()
-        }
-    }
-    #saveAmounts(){
-        localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
-    }
     // Domain
     logAmount(amount) {
         this.allOfAmounts.push(amount)
