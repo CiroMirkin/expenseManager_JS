@@ -61,8 +61,6 @@ export default class Account {
         const acoountValuesHTMLElement = document.getElementById('accountValues')
         acoountValuesHTMLElement.innerHTML = `<ul class="mx-3  rounded-2 border border-1 border-light-subtle border-opacity-50">
             <li><span class="fs-6 opacity-50">Total</span><div class="fs-1">${this.#getTotalAmount()}</div></li>
-            <li><span class="fs-6 opacity-50">Income</span><div class="fs-2">${this.#getTotalIncome()}</div></li>
-            <li><span class="fs-6 opacity-50">Expenses</span><div class="fs-2">${this.#getTotalExpenses()}</div></li>
         </ul>`
     }
 }
