@@ -39,7 +39,7 @@ export default class AccountView {
     showIncomes(incomes) {
         const incomeListElement = document.getElementById('incomeList')
         incomeListElement.innerHTML = incomes.map(income => (
-            `<li id="${income.id}" class="list-group-item border border-primary-subtle">
+            `<li id="amount-${income.id}" class="list-group-item border border-primary-subtle">
                 <header class="d-flex justify-content-between align-items-center">${income.amount}
                     <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#${income.id}amountInfo" aria-expanded="false" aria-controls="${income.id}amountInfo">
                         <i class="bi bi-info-circle"></i>
@@ -60,7 +60,7 @@ export default class AccountView {
     showExpenses(expenses) {
         const expenseListElement = document.getElementById('expenseList')
         expenseListElement.innerHTML = expenses.map(expense => (
-            `<li id="${expense.id}" class="list-group-item border border-danger-subtle">
+            `<li id="amount-${expense.id}" class="list-group-item border border-danger-subtle">
                 <header class="d-flex justify-content-between align-items-center">${expense.amount}
                     <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#${expense.id}amountInfo" aria-expanded="false" aria-controls="${expense.id}amountInfo">
                         <i class="bi bi-info-circle"></i>
