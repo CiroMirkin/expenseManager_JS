@@ -55,7 +55,4 @@ export default class NewAmountView {
             }
         }
     }
-    saveNewAmount(newAmount) {
-        this.account.logAmount(newAmount)
-    }
 }

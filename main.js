@@ -73,7 +73,7 @@ const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn
 addAmountSubmitInputBtn.addEventListener('click', (e) => {
     e.preventDefault()
     const newAmount = newAmountView.getNewAmount()
-    newAmountView.saveNewAmount(newAmount)
+    defaultAccount.logAmount(newAmount)
     showChanges()
     newAmountView.cleanInputs()
     addNewAmountModal.hide()
