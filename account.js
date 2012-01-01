@@ -32,25 +32,25 @@ export default class Account {
         this.allOfAmounts = this.allOfAmounts.filter(amount => amount.id !== amountId)
         this.#saveAmounts()
     }
-    #getIncomes() {
+    getIncomes() {
         return this.allOfAmounts.filter(amount => amount.type == 'income')
     }
-    #getExpenses() {
+    getExpenses() {
         return this.allOfAmounts.filter(amount => amount.type == 'expense')
     }
-    #getTotalIncome(){
+    getTotalIncome(){
         let totalIncome = 0
         const income = this.#getIncomes()
         income.forEach(amount => totalIncome += amount.amount)
         return totalIncome
     }
-    #getTotalExpenses() {
+    getTotalExpenses() {
         let totalExpense = 0
         const expenses = this.#getExpenses()
         expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
-    #getTotalAmount(){
+    getTotalAmount(){
         return this.#getTotalIncome() - this.#getTotalExpenses()
     }
     // View
