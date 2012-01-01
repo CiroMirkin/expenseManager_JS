@@ -4,13 +4,14 @@ const commentInput = document.getElementById('commentInput')
 const newAmountForm = document.getElementById('newAmountForm')
 newAmountForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    const newAmount = {
-        id: 1,
-        amount: amountInput.value,
-        type: amountTypeSelect.value,
-        comment: commentInput.value
-    } 
+    const newAmount = getNewAmountFromForm()
     cleanForm()
+})
+const getNewAmountFromForm = () => ({
+    id: 1,
+    amount: amountInput.value,
+    type: amountTypeSelect.value,
+    comment: commentInput.value
 })
 const cleanForm = () => {
     amountInput.value = ''
