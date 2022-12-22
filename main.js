@@ -18,6 +18,8 @@ const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
 
+const defaultAccount = new Account('default')
+
 addAmountSubmitInputBtn.addEventListener('click', e => {
     e.preventDefault()
     if(isTheInputValid()) {
@@ -26,6 +28,7 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
             type: amountTypeSelect.value,
             commment: commentInput.value.trim()
         }
+        defaultAccount.logAmount(newAmountForRegister)
         cleanInputs()
     }
 })
