@@ -1,5 +1,18 @@
 "use strict"
 
+class Account {
+    constructor(name) {
+        this.name = name
+        this.allOfAmounts = []
+    }
+    logAmount(amount) {
+        this.allOfAmounts.push(amount)
+    }
+    getAllOfAmounts() {
+        return [...this.allOfAmounts]
+    }
+}
+
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
