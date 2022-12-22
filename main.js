@@ -23,6 +23,6 @@ const isTheInputValid = () => {
 
 const cleanInputs = () => {
     amountInput.value = ''
-    amountTypeSelect.value = ''
-    commentInput.value = 'none'
+    amountTypeSelect.value = 'none'
+    commentInput.value = ''
 }
