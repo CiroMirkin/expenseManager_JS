@@ -24,6 +24,9 @@ class Account {
         this.expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
+    getTotalAmount(){
+        return this.getTotalIncome() - this.getTotalExpenses()
+    }
 }
 
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
@@ -38,7 +41,7 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
     e.preventDefault()
     if(isTheInputValid()) {
         const newAmountForRegister = {
-            amount: amountInput.value,
+            amount: Number(amountInput.value),
             type: amountTypeSelect.value,
             comment: commentInput.value
         }
