@@ -14,6 +14,11 @@ class Account {
     getAllOfAmounts() {
         return [...this.allOfAmounts]
     }
+    getTotalIncome(){
+        let totalIncome = 0
+        this.incomes.forEach(amount => totalIncome += amount.amount)
+        return totalIncome
+    }
 }
 
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
