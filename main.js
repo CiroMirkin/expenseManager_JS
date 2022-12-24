@@ -4,9 +4,12 @@ class Account {
     constructor(name) {
         this.name = name
         this.allOfAmounts = []
+        this.incomes = []
+        this.expenses = []
     }
     logAmount(amount) {
         this.allOfAmounts.push(amount)
+        amount.type == 'income' ? this.incomes.push(amount) : this.expenses.push(amount)
     }
     getAllOfAmounts() {
         return [...this.allOfAmounts]
