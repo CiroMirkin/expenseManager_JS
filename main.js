@@ -11,8 +11,17 @@ class Account {
         this.allOfAmounts.push(amount)
         amount.type == 'income' ? this.incomes.push(amount) : this.expenses.push(amount)
     }
-    getAllOfAmounts() {
-        return [...this.allOfAmounts]
+    showAllAmounts() {
+        const amountListElement = document.getElementById('amountList')
+        amountListElement.innerHTML =  this.allOfAmounts.map(amount =>`
+            <li class="amountList__amount">
+                <div>
+                    ${amount.amount}
+                    <span>${amount.type}</span>
+                </div>
+                <p>${amount.comment}</p>
+            </li>
+        ` ).join('')
     }
     getTotalIncome(){
         let totalIncome = 0
@@ -33,7 +42,6 @@ const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
-const amountListElement = document.getElementById('amountList')
 
 const defaultAccount = new Account('default')
 
@@ -46,7 +54,6 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
             comment: commentInput.value
         }
         defaultAccount.logAmount(newAmountForRegister)
-        showNewAmount(defaultAccount)
         cleanInputs()
     }
 })
@@ -59,31 +66,4 @@ const cleanInputs = () => {
     amountInput.value = ''
     amountTypeSelect.value = 'none'
     commentInput.value = ''
-}
-
-const showAllOfAmounts = (account) => {
-    const allOfAmounts = account.getAllOfAmounts()
-    amountListElement.innerHTML =  allOfAmounts.map(amount =>`
-        <li class="amountList__amount">
-            <div>
-                ${amount.amount}
-                <span>${amount.type}</span>
-            </div>
-            <p>${amount.comment}</p>
-        </li>
-    ` ).join('')
-}
-
-const showNewAmount = (account) => {
-    const allOfAmounts = account.getAllOfAmounts()
-    const newAmount = allOfAmounts.at(-1)
-    amountListElement.innerHTML +=  `
-        <li class="amountList__amount">
-            <div>
-                ${newAmount.amount}
-                <span>${newAmount.type}</span>
-            </div>
-            <p>${newAmount.comment}</p>
-        </li>
-    `
 }
