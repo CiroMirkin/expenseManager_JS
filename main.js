@@ -23,18 +23,26 @@ class Account {
             </li>
         ` ).join('')
     }
-    getTotalIncome(){
+    showAccountValues(){
+        const acoountValuesHTMLElement = document.getElementById('accountValues')
+        acoountValuesHTMLElement.innerHTML = `<ul>
+            <li><span>Total</span><div>${this.#getTotalAmount()}</div></li>
+            <li><span>Income</span><div>${this.#getTotalIncome()}</div></li>
+            <li><span>Expenses</span><div>${this.#getTotalExpenses()}</div></li>
+        </ul>`
+    }
+    #getTotalIncome(){
         let totalIncome = 0
         this.incomes.forEach(amount => totalIncome += amount.amount)
         return totalIncome
     }
-    getTotalExpenses() {
+    #getTotalExpenses() {
         let totalExpense = 0
         this.expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
-    getTotalAmount(){
-        return this.getTotalIncome() - this.getTotalExpenses()
+    #getTotalAmount(){
+        return this.#getTotalIncome() - this.#getTotalExpenses()
     }
 }
 
@@ -54,6 +62,8 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
             comment: commentInput.value
         }
         defaultAccount.logAmount(newAmountForRegister)
+        defaultAccount.showAllAmounts()
+        defaultAccount.showAccountValues()
         cleanInputs()
     }
 })
