@@ -6,10 +6,33 @@ class Account {
         this.allOfAmounts = []
         this.incomes = []
         this.expenses = []
+        this.#firstInit()
+    }
+    async #firstInit() {
+        console.info(`${this.name} account init`)
+        this.allOfAmounts = await JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
+        this.incomes = JSON.parse(localStorage.getItem(`incomes-${this.name}`)) || []
+        this.expenses = JSON.parse(localStorage.getItem(`expenses-${this.name}`)) || []
+        if(!!this.allOfAmounts.length){
+            this.showAllAmounts()
+            this.showAccountValues()
+        }
     }
     logAmount(amount) {
         this.allOfAmounts.push(amount)
-        amount.type == 'income' ? this.incomes.push(amount) : this.expenses.push(amount)
+        if(amount.type == 'income'){
+            this.incomes.push(amount)
+        } 
+        if(amount.type == 'expense'){
+            this.expenses.push(amount)
+        }
+        this.#saveAmounts()
+    }
+    #saveAmounts(){
+        localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
+        localStorage.setItem(`expenses-${this.name}`, JSON.stringify(this.expenses))
+        localStorage.setItem(`incomes-${this.name}`, JSON.stringify(this.incomes))
+
     }
     showAllAmounts() {
         const amountListElement = document.getElementById('amountList')
