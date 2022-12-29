@@ -61,6 +61,11 @@ main ul {
     border: 1px solid #000;
     font-size: 1.5ch;
 }
+.amountList__amount .amount-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: start;
+}
 .amountList__amount div {
     margin: 0 0 5px;
     display: flex;

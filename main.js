@@ -28,6 +28,12 @@ class Account {
         }
         this.#saveAmounts()
     }
+    editAmount(amountId) {
+
+    }
+    deleteAmount(amountId) {
+
+    }
     #saveAmounts(){
         localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
         localStorage.setItem(`expenses-${this.name}`, JSON.stringify(this.expenses))
@@ -43,6 +49,10 @@ class Account {
                     <span>${amount.type}</span>
                 </div>
                 <p>${amount.comment}</p>
+                <div class="amount-actions">
+                    <button class="amount-actions__action" amount-action="edit">Edit</button>
+                    <button class="amount-actions__action" amount-action="delete">Delete</button>
+                </div>
             </li>
         ` ).join('')
     }
@@ -73,6 +83,7 @@ const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
+const amountListHTMLElement = document.getElementById('amountList')
 
 const defaultAccount = new Account('default')
 
@@ -100,3 +111,14 @@ const cleanInputs = () => {
     amountTypeSelect.value = 'none'
     commentInput.value = ''
 }
+
+amountListHTMLElement.addEventListener('click', (e) => {
+    const amountActionName = e.target.attributes["amount-action"].value
+    const amountId = e.target.parentElement.parentElement.id
+    if(amountActionName == 'edit') {
+        defaultAccount.editAmount(amountId)
+    } 
+    else if(amountActionName == 'delete') {
+        defaultAccount.deleteAmount(amountId)
+    }
+})
