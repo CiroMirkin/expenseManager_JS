@@ -79,6 +79,8 @@ class Account {
     }
 }
 
+const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
+
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
@@ -91,6 +93,7 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
     e.preventDefault()
     if(isTheInputValid()) {
         const newAmountForRegister = {
+            id: generateId(),
             amount: Number(amountInput.value),
             type: amountTypeSelect.value,
             comment: commentInput.value
