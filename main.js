@@ -8,9 +8,9 @@ class Account {
         this.expenses = []
         this.#firstInit()
     }
-    async #firstInit() {
+    #firstInit() {
         console.info(`${this.name} account init`)
-        this.allOfAmounts = await JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
+        this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
         this.incomes = JSON.parse(localStorage.getItem(`incomes-${this.name}`)) || []
         this.expenses = JSON.parse(localStorage.getItem(`expenses-${this.name}`)) || []
         if(!!this.allOfAmounts.length){
@@ -28,11 +28,23 @@ class Account {
         }
         this.#saveAmounts()
     }
-    editAmount(amountId) {
-
+    editAmount({ amountId, newAmount }) {
+        this.allOfAmounts = this.allOfAmounts.map(amount => {
+            return amount.id == amountId ? {...newAmount, id: amountId} : amount
+        })
+        this.incomes = this.incomes.map(amount => {
+            return amount.id == amountId ? {...newAmount, id: amountId} : amount
+        })
+        this.expenses = this.expenses.map(amount => {
+            return amount.id == amountId ? {...newAmount, id: amountId} : amount
+        })
+        this.#saveAmounts()
     }
     deleteAmount(amountId) {
-
+        this.allOfAmounts = this.allOfAmounts.filter(amount => amount.id !== amountId)
+        this.incomes = this.incomes.filter(amount => amount.id !== amountId)
+        this.expenses = this.expenses.filter(amount => amount.id !== amountId)
+        this.#saveAmounts()
     }
     #saveAmounts(){
         localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
@@ -43,7 +55,7 @@ class Account {
     showAllAmounts() {
         const amountListElement = document.getElementById('amountList')
         amountListElement.innerHTML =  this.allOfAmounts.map(amount =>`
-            <li class="amountList__amount">
+            <li id="${amount.id}" class="amountList__amount">
                 <div>
                     ${amount.amount}
                     <span>${amount.type}</span>
@@ -119,9 +131,11 @@ amountListHTMLElement.addEventListener('click', (e) => {
     const amountActionName = e.target.attributes["amount-action"].value
     const amountId = e.target.parentElement.parentElement.id
     if(amountActionName == 'edit') {
-        defaultAccount.editAmount(amountId)
+        defaultAccount.editAmount({ amountId, newAmount: {}})
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
     }
+    defaultAccount.showAllAmounts()
+    defaultAccount.showAccountValues()
 })
