@@ -6,9 +6,8 @@ class Account {
         this.allOfAmounts = []
         this.incomes = []
         this.expenses = []
-        this.#firstInit()
     }
-    #firstInit() {
+    firstInit() {
         console.info(`${this.name} account init`)
         this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
         this.incomes = JSON.parse(localStorage.getItem(`incomes-${this.name}`)) || []
@@ -100,6 +99,7 @@ const commentInput = document.getElementById('commentInput')
 const amountListHTMLElement = document.getElementById('amountList')
 
 const defaultAccount = new Account('default')
+defaultAccount.firstInit()
 
 addAmountSubmitInputBtn.addEventListener('click', e => {
     e.preventDefault()
