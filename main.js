@@ -67,15 +67,13 @@ class Account {
     showAllAmounts() {
         const amountListElement = document.getElementById('amountList')
         amountListElement.innerHTML =  this.allOfAmounts.map(amount =>`
-            <li id="${amount.id}" class="amountList__amount">
-                <div>
-                    ${amount.amount}
-                    <span>${amount.type}</span>
-                </div>
-                <p>${amount.comment}</p>
-                <div class="amount-actions">
-                    <button class="amount-actions__action" amount-action="edit">Edit</button>
-                    <button class="amount-actions__action" amount-action="delete">Delete</button>
+            <li id="${amount.id}" class="card">
+                <div class="card-body">
+                    <div class="card-title">${amount.amount}</div>
+                    <div class="card-subtitle mb-2 text-muted">${amount.type}</div>
+                    <p class="card-text">${amount.comment}</p>
+                    <button class="btn btn-primary" amount-action="edit">Edit</button>
+                    <button class="btn btn-danger" amount-action="delete">Delete</button>
                 </div>
             </li>
         ` ).join('')
