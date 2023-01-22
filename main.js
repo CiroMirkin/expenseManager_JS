@@ -51,6 +51,19 @@ class Account {
         localStorage.setItem(`incomes-${this.name}`, JSON.stringify(this.incomes))
 
     }
+    #getTotalIncome(){
+        let totalIncome = 0
+        this.incomes.forEach(amount => totalIncome += amount.amount)
+        return totalIncome
+    }
+    #getTotalExpenses() {
+        let totalExpense = 0
+        this.expenses.forEach(amount => totalExpense += amount.amount)
+        return totalExpense
+    }
+    #getTotalAmount(){
+        return this.#getTotalIncome() - this.#getTotalExpenses()
+    }
     showAllAmounts() {
         const amountListElement = document.getElementById('amountList')
         amountListElement.innerHTML =  this.allOfAmounts.map(amount =>`
@@ -74,19 +87,6 @@ class Account {
             <li><span>Income</span><div>${this.#getTotalIncome()}</div></li>
             <li><span>Expenses</span><div>${this.#getTotalExpenses()}</div></li>
         </ul>`
-    }
-    #getTotalIncome(){
-        let totalIncome = 0
-        this.incomes.forEach(amount => totalIncome += amount.amount)
-        return totalIncome
-    }
-    #getTotalExpenses() {
-        let totalExpense = 0
-        this.expenses.forEach(amount => totalExpense += amount.amount)
-        return totalExpense
-    }
-    #getTotalAmount(){
-        return this.#getTotalIncome() - this.#getTotalExpenses()
     }
 }
 
