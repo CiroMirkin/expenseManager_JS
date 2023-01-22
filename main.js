@@ -69,7 +69,7 @@ class Account {
         amountListElement.innerHTML =  this.allOfAmounts.map(amount =>`
             <li id="${amount.id}" class="card">
                 <div class="card-body">
-                    <div class="card-title">${amount.amount}</div>
+                    <div class="card-title h3">${amount.amount}</div>
                     <div class="card-subtitle mb-2 text-muted">${amount.type}</div>
                     <p class="card-text">${amount.comment}</p>
                     <button class="btn btn-primary" amount-action="edit">Edit</button>
