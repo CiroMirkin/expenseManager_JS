@@ -33,10 +33,14 @@ class Account {
     }
     #getTotalIncome(){
         let totalIncome = 0
+        const income = this.allOfAmounts.filter(amount => amount.type == 'income')
+        income.forEach(amount => totalIncome += amount.amount)
         return totalIncome
     }
     #getTotalExpenses() {
         let totalExpense = 0
+        const expenses = this.allOfAmounts.filter(amount => amount.type == 'expense')
+        expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
     #getTotalAmount(){
