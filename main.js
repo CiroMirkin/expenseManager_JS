@@ -19,7 +19,7 @@ class Account {
     }
     editAmount({ amountId, newAmount }) {
         this.allOfAmounts = this.allOfAmounts.map(amount => {
-            return amount.id == amountId ? {...newAmount, id: amountId} : amount
+            return amount.id == amountId ? {...newAmount} : amount
         })
         this.#saveAmounts()
     }
@@ -54,7 +54,7 @@ class Account {
                     <div class="card-title h3">${amount.amount}</div>
                     <div class="card-subtitle mb-2 text-muted">${amount.type}</div>
                     <p class="card-text">${amount.comment}</p>
-                    <button class="btn btn-primary" amount-action="edit" data-bs-toggle="modal" data-bs-target="#editAmountModal">Edit</button>
+                    <button class="btn btn-primary" amount-action="edit">Edit</button>
                     <button class="btn btn-danger" amount-action="delete">Delete</button>
                 </div>
             </li>
@@ -77,7 +77,9 @@ const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
 const amountListHTMLElement = document.getElementById('amountList')
-
+const editAmountModal = new bootstrap.Modal(document.getElementById('editAmountModal'), {
+    keyboard: false
+})
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
 
@@ -111,7 +113,9 @@ amountListHTMLElement.addEventListener('click', (e) => {
     const amountActionName = e.target.attributes["amount-action"].value
     const amountId = e.target.parentElement.parentElement.id
     if(amountActionName == 'edit') {
-        defaultAccount.editAmount({ amountId, newAmount: {}})
+        editAmountModal.show()
+        editAmount(amountId)
+        
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
@@ -119,3 +123,22 @@ amountListHTMLElement.addEventListener('click', (e) => {
     defaultAccount.showAllAmounts()
     defaultAccount.showAccountValues()
 })
+
+const editAmount = (amountId) => {
+    const saveChangesInAmountBtn = document.getElementById('saveChangesInAmountBtn')
+    saveChangesInAmountBtn.addEventListener('click', (e) => {
+        const newAmount = document.getElementById('editAmountInput').value
+        const newType = document.getElementById('editAmountTypeSelect').value
+        const newComment = document.getElementById('editCommentInput').value
+        const newUserAmount = {
+            id: amountId,
+            amount: Number(newAmount),
+            type: newType,
+            comment: newComment
+        }
+        defaultAccount.editAmount({ amountId, newAmount: newUserAmount })
+        defaultAccount.showAllAmounts()
+        defaultAccount.showAccountValues()
+        editAmountModal.hide()
+    }, { once: true })
+}
