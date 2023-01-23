@@ -54,7 +54,7 @@ class Account {
                     <div class="card-title h3">${amount.amount}</div>
                     <div class="card-subtitle mb-2 text-muted">${amount.type}</div>
                     <p class="card-text">${amount.comment}</p>
-                    <button class="btn btn-primary" amount-action="edit">Edit</button>
+                    <button class="btn btn-primary" amount-action="edit" data-bs-toggle="modal" data-bs-target="#editAmountModal">Edit</button>
                     <button class="btn btn-danger" amount-action="delete">Delete</button>
                 </div>
             </li>
