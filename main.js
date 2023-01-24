@@ -67,7 +67,7 @@ const getNewAmount = (amountId) => {
     return new Promise(resolve => {
         saveChangesInAmountBtn.addEventListener('click', (e) => {
             const newAmount = {
-                id: amountId.value,
+                id: amountId,
                 amount: Number(editAmountInput.value),
                 type: editTypeSelect.value,
                 comment: editCommentInput.value,
