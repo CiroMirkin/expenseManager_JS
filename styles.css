@@ -1,7 +1,5 @@
 .header {
     width: 100%;
-    margin: 5vh 0;
-    padding: 0 15px;
 }
 .header ul { 
     display: flex;
@@ -12,10 +10,4 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-}
-.header ul li span {
-    font-size: 1.2ch;
-}
-.header ul li div {
-    font-size: 2.5ch;
 }
