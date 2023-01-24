@@ -91,7 +91,7 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
             amount: Number(amountInput.value),
             type: amountTypeSelect.value,
             comment: commentInput.value,
-            date: new Date(date.now).toLocaleDateString()
+            date: new Date(Date.now()).toLocaleDateString()
         }
         defaultAccount.logAmount(newAmountForRegister)
         defaultAccount.showAllAmounts()
@@ -142,7 +142,13 @@ const getNewAmount = (amountId) => {
                 comment: editCommentInput.value,
                 date: editDateInput.value
             }
-            resolve(newAmount)
-        }, { once: true })
+            if(areValidTheInputsOfNewAmount()){
+                resolve(newAmount)
+            }
+        })
     })
+}
+
+const areValidTheInputsOfNewAmount = () => {
+    return !!editAmountInput.value && !!editCommentInput.value && editTypeSelect.value != 'none' && !!editDateInput.value
 }
