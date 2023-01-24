@@ -90,7 +90,8 @@ addAmountSubmitInputBtn.addEventListener('click', e => {
             id: generateId(),
             amount: Number(amountInput.value),
             type: amountTypeSelect.value,
-            comment: commentInput.value
+            comment: commentInput.value,
+            date: new Date(date.now).toLocaleDateString()
         }
         defaultAccount.logAmount(newAmountForRegister)
         defaultAccount.showAllAmounts()
@@ -132,11 +133,13 @@ const getNewAmount = (amountId) => {
             const newAmount = document.getElementById('editAmountInput').value
             const newType = document.getElementById('editAmountTypeSelect').value
             const newComment = document.getElementById('editCommentInput').value
+            const newDate = document.getElementById('editDateInput').value
             const newUserAmount = {
                 id: amountId,
                 amount: Number(newAmount),
                 type: newType,
-                comment: newComment
+                comment: newComment,
+                date: newDate
             }
             resolve(newUserAmount)
         }, { once: true })
