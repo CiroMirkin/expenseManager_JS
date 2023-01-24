@@ -109,13 +109,14 @@ const cleanInputs = () => {
     commentInput.value = ''
 }
 
-amountListHTMLElement.addEventListener('click', (e) => {
+amountListHTMLElement.addEventListener('click', async (e) => {
     const amountActionName = e.target.attributes["amount-action"].value
     const amountId = e.target.parentElement.parentElement.id
     if(amountActionName == 'edit') {
         editAmountModal.show()
-        editAmount(amountId)
-        
+        const newAmount = await getNewAmount(amountId)
+        defaultAccount.editAmount({ amountId, newAmount })
+        editAmountModal.hide()
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
@@ -124,21 +125,20 @@ amountListHTMLElement.addEventListener('click', (e) => {
     defaultAccount.showAccountValues()
 })
 
-const editAmount = (amountId) => {
+const getNewAmount = (amountId) => {
     const saveChangesInAmountBtn = document.getElementById('saveChangesInAmountBtn')
-    saveChangesInAmountBtn.addEventListener('click', (e) => {
-        const newAmount = document.getElementById('editAmountInput').value
-        const newType = document.getElementById('editAmountTypeSelect').value
-        const newComment = document.getElementById('editCommentInput').value
-        const newUserAmount = {
-            id: amountId,
-            amount: Number(newAmount),
-            type: newType,
-            comment: newComment
-        }
-        defaultAccount.editAmount({ amountId, newAmount: newUserAmount })
-        defaultAccount.showAllAmounts()
-        defaultAccount.showAccountValues()
-        editAmountModal.hide()
-    }, { once: true })
+    return new Promise(resolve => {
+        saveChangesInAmountBtn.addEventListener('click', (e) => {
+            const newAmount = document.getElementById('editAmountInput').value
+            const newType = document.getElementById('editAmountTypeSelect').value
+            const newComment = document.getElementById('editCommentInput').value
+            const newUserAmount = {
+                id: amountId,
+                amount: Number(newAmount),
+                type: newType,
+                comment: newComment
+            }
+            resolve(newUserAmount)
+        }, { once: true })
+    })
 }
