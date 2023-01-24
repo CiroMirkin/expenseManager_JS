@@ -126,22 +126,23 @@ amountListHTMLElement.addEventListener('click', async (e) => {
     defaultAccount.showAccountValues()
 })
 
+const editAmountInput = document.getElementById('editAmountInput')
+const editTypeSelect = document.getElementById('editAmountTypeSelect')
+const editCommentInput = document.getElementById('editCommentInput')
+const editDateInput = document.getElementById('editDateInput')
+
 const getNewAmount = (amountId) => {
     const saveChangesInAmountBtn = document.getElementById('saveChangesInAmountBtn')
     return new Promise(resolve => {
         saveChangesInAmountBtn.addEventListener('click', (e) => {
-            const newAmount = document.getElementById('editAmountInput').value
-            const newType = document.getElementById('editAmountTypeSelect').value
-            const newComment = document.getElementById('editCommentInput').value
-            const newDate = document.getElementById('editDateInput').value
-            const newUserAmount = {
-                id: amountId,
-                amount: Number(newAmount),
-                type: newType,
-                comment: newComment,
-                date: newDate
+            const newAmount = {
+                id: amountId.value,
+                amount: Number(editAmountInput.value),
+                type: editTypeSelect.value,
+                comment: editCommentInput.value,
+                date: editDateInput.value
             }
-            resolve(newUserAmount)
+            resolve(newAmount)
         }, { once: true })
     })
 }
