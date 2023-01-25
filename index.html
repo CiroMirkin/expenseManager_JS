@@ -14,7 +14,6 @@
 <body>
     <header id="accountValues" class="my-3 mb-5 header"></header>
     <main class="container">
-        <div class="row">
             <div class="col">
                 <form>
                     <input type="number" id="amountInput" class="form-control mb-2" placeholder="Input amount...">
@@ -27,7 +26,17 @@
                     <button type="submit" id="addAmountSubmitInputBtn" class="btn btn-primary">Add</button>
                 </form>
             </div>
-            <ul id="amountList" class="col"></ul>
+            
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <button class="nav-link active">Incomes</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link">Enpenses</button>
+            </li>
+        </ul>
+        <div class="w-100 d-block overflow-y-auto" style="height: 150px;">
+            <ul id="amountList" class="list-group list-group-flush"></ul>
         </div>
     </main>
     <div class="modal" id="editAmountModal" tabindex="-1">

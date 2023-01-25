@@ -48,13 +48,11 @@ export default class Account {
     showAllAmounts() {
         const amountListElement = document.getElementById('amountList')
         amountListElement.innerHTML =  this.allOfAmounts.map(amount =>`
-            <li id="${amount.id}" class="card">
-                <div class="card-body">
-                    <div class="card-title h3">${amount.amount}</div>
-                    <div class="card-subtitle mb-2 text-muted">${amount.type}</div>
-                    <p class="card-text">${amount.comment}</p>
-                    <button class="btn btn-primary" amount-action="edit">Edit</button>
-                    <button class="btn btn-danger" amount-action="delete">Delete</button>
+            <li id="${amount.id}" class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="h5">${amount.amount}</div>
+                <div>
+                    <button class="btn btn-primary" amount-action="edit"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-danger" amount-action="delete"><i class="bi bi-trash3"></i></button>
                 </div>
             </li>
         ` ).join('')
