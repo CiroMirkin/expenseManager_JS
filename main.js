@@ -71,13 +71,17 @@ const getNewAmount = (amountId) => {
                 amount: Number(editAmountInput.value),
                 type: editTypeSelect.value,
                 comment: editCommentInput.value,
-                date: editDateInput.value
+                date: formatDate(editDateInput.value)
             }
             if(areValidTheInputsOfNewAmount()){
                 resolve(newAmount)
             }
         })
     })
+}
+
+const formatDate = (date) => {
+    return date.split('-').reverse().join('/')
 }
 
 const areValidTheInputsOfNewAmount = () => {
