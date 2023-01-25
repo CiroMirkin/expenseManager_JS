@@ -42,8 +42,9 @@ const cleanInputs = () => {
 }
 
 amountListHTMLElement.addEventListener('click', async (e) => {
-    const amountActionName = e.target.attributes["amount-action"].value
-    const amountId = e.target.parentElement.parentElement.id
+    const amountActionName = getAmountActionName(e)
+    const amountId = getAmountId(e)
+    console.log(amountId)
     if(amountActionName == 'edit') {
         editAmountModal.show()
         const newAmount = await getNewAmount(amountId)
@@ -56,6 +57,25 @@ amountListHTMLElement.addEventListener('click', async (e) => {
     defaultAccount.showAllAmounts()
     defaultAccount.showAccountValues()
 })
+
+const getAmountActionName = (e) => {
+    try {
+        const amountActionNameWhenTheClickIsOnBtn = e.target.attributes["amount-action"].value
+        return amountActionNameWhenTheClickIsOnBtn
+    } catch {
+        const amountActionNameWhenTheClickIsOnIconOfBtn = e.target.parentElement.attributes["amount-action"].value
+        return amountActionNameWhenTheClickIsOnIconOfBtn
+    }
+}
+
+const getAmountId = (e) => {
+    const amountIdWhenTheClickInOnBtn = e.target.parentElement.parentElement.id
+    if(!amountIdWhenTheClickInOnBtn) {
+        const amountIdWhenTheClickInOnIconOfBtn = e.target.parentElement.parentElement.parentElement.id
+        return amountIdWhenTheClickInOnIconOfBtn
+    }
+    return amountIdWhenTheClickInOnBtn
+}
 
 const editAmountInput = document.getElementById('editAmountInput')
 const editTypeSelect = document.getElementById('editAmountTypeSelect')
