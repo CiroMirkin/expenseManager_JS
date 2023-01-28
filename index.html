@@ -15,7 +15,29 @@
 <body>
     <header id="accountValues" class="my-3 mb-5 header"></header>
     <main class="container">
-            <div class="col">
+        <ul id="amountTypeNavigation" class="nav nav-tabs">
+            <li class="nav-item">
+              <button id="incomeBtnInAmountTypeNavigation" class="nav-link active">Incomes</button>
+            </li>
+            <li class="nav-item">
+                <button id="expenseBtnInAmountTypeNavigation" class="nav-link">Expenses</button>
+            </li>
+        </ul>
+        <div class="w-100 d-block">
+            <ul id="amountList" class="list-group list-group-flush overflow-y-auto" style="height: 150px;"></ul>
+            <div id="openModalForAddNewAmount" class="w-100 px-5 d-flex justify-content-end">
+                <button class="btn btn-primary rounded"><i class="bi bi-plus-lg"></i></button>
+            </div>
+        </div>
+    </main>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="newAmountModal">New amount</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
                 <form>
                     <input type="number" id="amountInput" class="form-control mb-2" placeholder="Input amount...">
                     <select id="amountTypeSelect" class="form-select mb-2">
@@ -27,19 +49,9 @@
                     <button type="submit" id="addAmountSubmitInputBtn" class="btn btn-primary">Add</button>
                 </form>
             </div>
-            
-        <ul id="amountTypeNavigation" class="nav nav-tabs">
-            <li class="nav-item">
-              <button id="incomeBtnInAmountTypeNavigation" class="nav-link active">Incomes</button>
-            </li>
-            <li class="nav-item">
-                <button id="expenseBtnInAmountTypeNavigation" class="nav-link">Expenses</button>
-            </li>
-        </ul>
-        <div class="w-100 d-block overflow-y-auto" style="height: 150px;">
-            <ul id="amountList" class="list-group list-group-flush"></ul>
+          </div>
         </div>
-    </main>
+      </div>
     <div class="modal" id="editAmountModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
