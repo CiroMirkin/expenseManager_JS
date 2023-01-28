@@ -19,6 +19,14 @@ amountTypeNavigation.addEventListener('click', e => {
     }
 })
 
+const openModalForAddNewAmount = document.getElementById('openModalForAddNewAmount')
+const addNewAmountModal = new bootstrap.Modal(document.getElementById('newAmountModal'), {
+    keyboard: false
+})
+openModalForAddNewAmount.addEventListener('click', () => {
+    addNewAmountModal.show()
+})
+
 const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
 
 const amountInput = document.getElementById('amountInput')
