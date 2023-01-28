@@ -1,16 +1,6 @@
 "use strict"
 import Account from './account.js'
 
-const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
-
-const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
-const amountInput = document.getElementById('amountInput')
-const amountTypeSelect = document.getElementById('amountTypeSelect')
-const commentInput = document.getElementById('commentInput')
-const amountListHTMLElement = document.getElementById('amountList')
-const editAmountModal = new bootstrap.Modal(document.getElementById('editAmountModal'), {
-    keyboard: false
-})
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
 
@@ -29,6 +19,12 @@ amountTypeNavigation.addEventListener('click', e => {
     }
 })
 
+const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
+
+const amountInput = document.getElementById('amountInput')
+const amountTypeSelect = document.getElementById('amountTypeSelect')
+const commentInput = document.getElementById('commentInput')
+const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 addAmountSubmitInputBtn.addEventListener('click', e => {
     e.preventDefault()
     if(isTheInputValid()) {
@@ -56,10 +52,13 @@ const cleanInputs = () => {
     commentInput.value = ''
 }
 
+const editAmountModal = new bootstrap.Modal(document.getElementById('editAmountModal'), {
+    keyboard: false
+})
+const amountListHTMLElement = document.getElementById('amountList')
 amountListHTMLElement.addEventListener('click', async (e) => {
     const amountActionName = getAmountActionName(e)
     const amountId = getAmountId(e)
-    console.log(amountId)
     if(amountActionName == 'edit') {
         editAmountModal.show()
         const newAmount = await getNewAmount(amountId)
