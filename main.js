@@ -14,6 +14,21 @@ const editAmountModal = new bootstrap.Modal(document.getElementById('editAmountM
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
 
+const amountTypeNavigation = document.getElementById('amountTypeNavigation')
+amountTypeNavigation.addEventListener('click', e => {
+    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
+    const expenseBtnInAmountTypeNavigation = document.getElementById('expenseBtnInAmountTypeNavigation')
+    if(e.target == incomeBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
+        incomeBtnInAmountTypeNavigation.classList.add('active')
+        expenseBtnInAmountTypeNavigation.classList.remove('active')
+        defaultAccount.showIncomes()
+    } else if (e.target == expenseBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
+        expenseBtnInAmountTypeNavigation.classList.add('active')
+        incomeBtnInAmountTypeNavigation.classList.remove('active')
+        defaultAccount.showExpenses()
+    }
+})
+
 addAmountSubmitInputBtn.addEventListener('click', e => {
     e.preventDefault()
     if(isTheInputValid()) {
