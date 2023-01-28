@@ -4,6 +4,16 @@ import Account from './account.js'
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
 
+const changeNewAmountModalTitle = (amountType) => {
+    const newAmountModalTitle = document.getElementById('newAmountModalTitle')
+    if(amountType == 'income') {
+        newAmountModalTitle.innerText = 'New income'
+        return true
+    }
+    
+    newAmountModalTitle.innerText = 'New expense'
+}
+
 const amountTypeNavigation = document.getElementById('amountTypeNavigation')
 amountTypeNavigation.addEventListener('click', e => {
     const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
@@ -12,11 +22,13 @@ amountTypeNavigation.addEventListener('click', e => {
         incomeBtnInAmountTypeNavigation.classList.add('active')
         expenseBtnInAmountTypeNavigation.classList.remove('active')
         defaultAccount.showIncomes()
+        changeNewAmountModalTitle('income')
     } 
     else if (e.target == expenseBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
         expenseBtnInAmountTypeNavigation.classList.add('active')
         incomeBtnInAmountTypeNavigation.classList.remove('active')
         defaultAccount.showExpenses()
+        changeNewAmountModalTitle('expense')
     }
 })
 
