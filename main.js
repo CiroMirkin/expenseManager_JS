@@ -10,7 +10,7 @@ const changeNewAmountModalTitle = (amountType) => {
         newAmountModalTitle.innerText = 'New income'
         return true
     }
-    
+
     newAmountModalTitle.innerText = 'New expense'
 }
 
@@ -41,9 +41,16 @@ openModalForAddNewAmount.addEventListener('click', () => {
 })
 
 const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
+const getAmountType = () => {
+    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
+    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
+        return 'income'
+    }
+    return 'expense'
+}
+const getDate = () => new Date(Date.now()).toLocaleDateString()
 
 const amountInput = document.getElementById('amountInput')
-const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 addAmountSubmitInputBtn.addEventListener('click', (e) => {
@@ -52,24 +59,24 @@ addAmountSubmitInputBtn.addEventListener('click', (e) => {
         const newAmountForRegister = {
             id: generateId(),
             amount: Number(amountInput.value),
-            type: amountTypeSelect.value,
+            type: getAmountType(),
             comment: commentInput.value,
-            date: new Date(Date.now()).toLocaleDateString()
+            date: getDate()
         }
         defaultAccount.logAmount(newAmountForRegister)
         defaultAccount.showIncomes()
         defaultAccount.showAccountValues()
         cleanInputs()
+        addNewAmountModal.hide()
     }
 })
 
 const isTheInputValid = () => {
-    return !!amountInput.value.trim() && !!commentInput.value.trim() && amountTypeSelect.value !== 'none'
+    return !!amountInput.value.trim() && !!commentInput.value.trim()
 }
 
 const cleanInputs = () => {
     amountInput.value = ''
-    amountTypeSelect.value = 'none'
     commentInput.value = ''
 }
 
