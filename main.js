@@ -12,7 +12,8 @@ amountTypeNavigation.addEventListener('click', e => {
         incomeBtnInAmountTypeNavigation.classList.add('active')
         expenseBtnInAmountTypeNavigation.classList.remove('active')
         defaultAccount.showIncomes()
-    } else if (e.target == expenseBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
+    } 
+    else if (e.target == expenseBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
         expenseBtnInAmountTypeNavigation.classList.add('active')
         incomeBtnInAmountTypeNavigation.classList.remove('active')
         defaultAccount.showExpenses()
@@ -33,7 +34,7 @@ const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
-addAmountSubmitInputBtn.addEventListener('click', e => {
+addAmountSubmitInputBtn.addEventListener('click', (e) => {
     e.preventDefault()
     if(isTheInputValid()) {
         const newAmountForRegister = {
