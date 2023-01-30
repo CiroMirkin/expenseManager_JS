@@ -10,21 +10,26 @@ const changeNewAmountModalTitleTo = (newTitle) => {
     newAmountModalTitle.innerText = newTitle
 }
 
-const amountTypeNavigation = document.getElementById('amountTypeNavigation')
-amountTypeNavigation.addEventListener('click', e => {
+const toggleAmountTypeNavigationOptions = () => {
     const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
     const expenseBtnInAmountTypeNavigation = document.getElementById('expenseBtnInAmountTypeNavigation')
-    if(e.target == incomeBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
-        incomeBtnInAmountTypeNavigation.classList.add('active')
-        expenseBtnInAmountTypeNavigation.classList.remove('active')
-        defaultAccount.showIncomes()
-        changeNewAmountModalTitleTo('New Income')
-    } 
-    else if (e.target == expenseBtnInAmountTypeNavigation && e.target.classList[1] != 'active') {
-        expenseBtnInAmountTypeNavigation.classList.add('active')
-        incomeBtnInAmountTypeNavigation.classList.remove('active')
-        defaultAccount.showExpenses()
-        changeNewAmountModalTitleTo('New expense')
+    incomeBtnInAmountTypeNavigation.classList.toggle('active')
+    expenseBtnInAmountTypeNavigation.classList.toggle('active')
+}
+
+const amountTypeNavigation = document.getElementById('amountTypeNavigation')
+amountTypeNavigation.addEventListener('click', (e) => {
+    if(e.target.classList[1] != 'active') {
+       if(e.target.id == 'incomeBtnInAmountTypeNavigation') {
+            toggleAmountTypeNavigationOptions()
+            defaultAccount.showIncomes()
+            changeNewAmountModalTitleTo('New Income')
+        } 
+        else if (e.target.id == 'expenseBtnInAmountTypeNavigation') {
+            toggleAmountTypeNavigationOptions()
+            defaultAccount.showExpenses()
+            changeNewAmountModalTitleTo('New expense')
+        } 
     }
 })
 
