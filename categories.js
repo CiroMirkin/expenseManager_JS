@@ -19,7 +19,7 @@ export default class Categories {
         const categorie = this.expenseCategories.filter(expenseCategorie => expenseCategorie.name == name)
         return categorie[0]
     }
-    getSelectInputOfIncomeCategories() {
+    getSelectInputContentOfIncomeCategories() {
         return `
             <option value="none">...</option>
             ${
@@ -29,7 +29,7 @@ export default class Categories {
             }
         `
     } 
-    getSelectInputOfExpenseCategories() {
+    getSelectInputContentOfExpenseCategories() {
         return `
             <option value="none">...</option>
             ${
