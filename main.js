@@ -17,6 +17,14 @@ const toggleAmountTypeNavigationOptions = () => {
     expenseBtnInAmountTypeNavigation.classList.toggle('active')
 }
 
+const changeCategoriesInNewAmountModal = (categories) => {
+    const amountCategorieSelect = document.getElementById('amountCategorieSelect')
+    amountCategorieSelect.innerHTML = categories
+}
+
+const categories = new Categories()
+changeCategoriesInNewAmountModal(categories.getSelectInputContentOfIncomeCategories())
+
 const amountTypeNavigation = document.getElementById('amountTypeNavigation')
 amountTypeNavigation.addEventListener('click', (e) => {
     if(e.target.classList[1] != 'active') {
@@ -24,11 +32,13 @@ amountTypeNavigation.addEventListener('click', (e) => {
             toggleAmountTypeNavigationOptions()
             defaultAccount.showIncomes()
             changeNewAmountModalTitleTo('New Income')
+            changeCategoriesInNewAmountModal(categories.getSelectInputContentOfIncomeCategories())
         } 
         else if (e.target.id == 'expenseBtnInAmountTypeNavigation') {
             toggleAmountTypeNavigationOptions()
             defaultAccount.showExpenses()
             changeNewAmountModalTitleTo('New expense')
+            changeCategoriesInNewAmountModal(categories.getSelectInputContentOfExpenseCategories())
         } 
     }
 })
