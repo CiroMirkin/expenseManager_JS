@@ -59,10 +59,20 @@ const getAmountType = () => {
     }
     return 'expense'
 }
+const getCategorie = () => {
+    const amountCategorieSelect = document.getElementById('amountCategorieSelect')
+    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
+    const categorie = amountCategorieSelect.value
+    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
+        return categories.getIncomeCategorie(categorie)
+    }
+    return categories.getExpenseCategorie(categorie)
+}
 const getDate = () => new Date(Date.now()).toLocaleDateString()
 
 const amountInput = document.getElementById('amountInput')
 const commentInput = document.getElementById('commentInput')
+const amountCategorieSelect = document.getElementById('amountCategorieSelect')
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 addAmountSubmitInputBtn.addEventListener('click', (e) => {
     e.preventDefault()
@@ -71,6 +81,7 @@ addAmountSubmitInputBtn.addEventListener('click', (e) => {
             id: generateId(),
             amount: Number(amountInput.value),
             type: getAmountType(),
+            categorie: getCategorie(),
             comment: commentInput.value,
             date: getDate()
         }
@@ -83,12 +94,13 @@ addAmountSubmitInputBtn.addEventListener('click', (e) => {
 })
 
 const isTheInputValid = () => {
-    return !!amountInput.value.trim() && !!commentInput.value.trim()
+    return !!amountInput.value.trim() && !!commentInput.value.trim() && amountCategorieSelect.value != 'none'
 }
 
 const cleanInputs = () => {
     amountInput.value = ''
     commentInput.value = ''
+    amountCategorieSelect.value = 'none'
 }
 
 const editAmountModal = new bootstrap.Modal(document.getElementById('editAmountModal'), {
