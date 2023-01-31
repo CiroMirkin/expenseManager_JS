@@ -2,6 +2,7 @@
 import Account from './account.js'
 import Categories from './categories.js'
 import NewAmountView from './newAmountView.js'
+import EditAmountView from './editAmountView.js'
 
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
@@ -73,15 +74,18 @@ amountListHTMLElement.addEventListener('click', async (e) => {
     const amountId = getAmountId(e)
     if(amountActionName == 'edit') {
         editAmountModal.show()
-        const newAmount = await getNewAmount(amountId)
-        defaultAccount.editAmount({ amountId, newAmount })
+        const editAmountView = new EditAmountView(defaultAccount)
+        const editedAmount = await editAmountView.getEditedAmount(amountId)
+        console.log(editedAmount)
+        editAmountView.saveEditedAmount(editedAmount)
+        editAmountView.showChanges()
         editAmountModal.hide()
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
+        defaultAccount.showIncomes()
+        defaultAccount.showAccountValues()
     }
-    defaultAccount.showIncomes()
-    defaultAccount.showAccountValues()
 })
 
 const getAmountActionName = (e) => {
@@ -101,36 +105,4 @@ const getAmountId = (e) => {
         return amountIdWhenTheClickInOnIconOfBtn
     }
     return amountIdWhenTheClickInOnBtn
-}
-
-const editAmountInput = document.getElementById('editAmountInput')
-const editTypeSelect = document.getElementById('editAmountTypeSelect')
-const editAmountCategorieSelect = document.getElementById('editAmountCategorieSelect')
-const editCommentInput = document.getElementById('editCommentInput')
-const editDateInput = document.getElementById('editDateInput')
-
-const getNewAmount = (amountId) => {
-    const saveChangesInAmountBtn = document.getElementById('saveChangesInAmountBtn')
-    return new Promise(resolve => {
-        saveChangesInAmountBtn.addEventListener('click', (e) => {
-            const newAmount = {
-                id: amountId,
-                amount: Number(editAmountInput.value),
-                type: editTypeSelect.value,
-                comment: editCommentInput.value,
-                date: formatDate(editDateInput.value)
-            }
-            if(areValidTheInputsOfNewAmount()){
-                resolve(newAmount)
-            }
-        })
-    })
-}
-
-const formatDate = (date) => {
-    return date.split('-').reverse().join('/')
-}
-
-const areValidTheInputsOfNewAmount = () => {
-    return !!editAmountInput.value && !!editCommentInput.value && editTypeSelect.value != 'none' && !!editDateInput.value
 }
