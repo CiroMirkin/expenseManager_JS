@@ -144,6 +144,7 @@ const getAmountId = (e) => {
 
 const editAmountInput = document.getElementById('editAmountInput')
 const editTypeSelect = document.getElementById('editAmountTypeSelect')
+const editAmountCategorieSelect = document.getElementById('editAmountCategorieSelect')
 const editCommentInput = document.getElementById('editCommentInput')
 const editDateInput = document.getElementById('editDateInput')
 
