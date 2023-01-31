@@ -1,6 +1,7 @@
 "use strict"
 import Account from './account.js'
 import Categories from './categories.js'
+import NewAmountView from './newAmountView.js'
 
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
@@ -41,67 +42,27 @@ amountTypeNavigation.addEventListener('click', (e) => {
             changeCategoriesInNewAmountModal(categories.getSelectInputContentOfExpenseCategories())
         } 
     }
-})
+}) 
 
 const openModalForAddNewAmount = document.getElementById('openModalForAddNewAmount')
 const addNewAmountModal = new bootstrap.Modal(document.getElementById('newAmountModal'), {
     keyboard: false
 })
+
 openModalForAddNewAmount.addEventListener('click', () => {
     addNewAmountModal.show()
 })
 
-const generateId = () => Date.now().toString(35) + Math.random().toString(36).slice(2)
-const getAmountType = () => {
-    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
-    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
-        return 'income'
-    }
-    return 'expense'
-}
-const getCategorie = () => {
-    const amountCategorieSelect = document.getElementById('amountCategorieSelect')
-    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
-    const categorie = amountCategorieSelect.value
-    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
-        return categories.getIncomeCategorie(categorie)
-    }
-    return categories.getExpenseCategorie(categorie)
-}
-const getDate = () => new Date(Date.now()).toLocaleDateString()
-
-const amountInput = document.getElementById('amountInput')
-const commentInput = document.getElementById('commentInput')
-const amountCategorieSelect = document.getElementById('amountCategorieSelect')
+const newAmountView = new NewAmountView(defaultAccount)
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 addAmountSubmitInputBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    if(isTheInputValid()) {
-        const newAmountForRegister = {
-            id: generateId(),
-            amount: Number(amountInput.value),
-            type: getAmountType(),
-            categorie: getCategorie(),
-            comment: commentInput.value,
-            date: getDate()
-        }
-        defaultAccount.logAmount(newAmountForRegister)
-        defaultAccount.showIncomes()
-        defaultAccount.showAccountValues()
-        cleanInputs()
-        addNewAmountModal.hide()
-    }
+    const newAmount = newAmountView.getNewAmount()
+    newAmountView.saveNewAmount(newAmount)
+    newAmountView.showChanges()
+    newAmountView.cleanInputs()
+    addNewAmountModal.hide()
 })
-
-const isTheInputValid = () => {
-    return !!amountInput.value.trim() && !!commentInput.value.trim() && amountCategorieSelect.value != 'none'
-}
-
-const cleanInputs = () => {
-    amountInput.value = ''
-    commentInput.value = ''
-    amountCategorieSelect.value = 'none'
-}
 
 const editAmountModal = new bootstrap.Modal(document.getElementById('editAmountModal'), {
     keyboard: false
