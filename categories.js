@@ -3,12 +3,31 @@ export default class Categories {
     constructor() {
         this.incomeCategories = [
             {
-                name: 'Hospital',
-                HTMLIcon: ''
-            }
+                name: 'Work',
+                HTMLIcon: '<i class="bi bi-briefcase"></i>'
+            },
+            {
+                name: 'Others',
+                HTMLIcon: '<i class="bi bi-question-circle"></i>'
+            },
         ]
         this.expenseCategories = [
-
+            {
+                name: 'Hospital',
+                HTMLIcon: '<i class="bi bi-hospital"></i>'
+            },
+            {
+                name: 'Supermarket',
+                HTMLIcon: '<i class="bi bi-cart2"></i>'
+            },
+            {
+                name: 'Cafe shop',
+                HTMLIcon: '<i class="bi bi-cup-hot"></i>'
+            },
+            {
+                name: 'Others',
+                HTMLIcon: '<i class="bi bi-question-circle"></i>'
+            },
         ]
     }
     getIncomeCategorie(name) {
