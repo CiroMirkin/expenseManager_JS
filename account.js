@@ -16,9 +16,9 @@ export default class Account {
         this.allOfAmounts.push(amount)
         this.#saveAmounts()
     }
-    editAmount({ amountId, newAmount }) {
+    editAmount({ amountId, amountEdited }) {
         this.allOfAmounts = this.allOfAmounts.map(amount => {
-            return amount.id == amountId ? {...newAmount} : amount
+            return amount.id == amountId ? {...amountEdited} : amount
         })
         this.#saveAmounts()
     }

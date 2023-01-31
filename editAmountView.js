@@ -36,7 +36,7 @@ export default class EditAmountView {
         })
     }
     saveEditedAmount(editedAmount) {
-        this.account.editAmount({ amountId: editedAmount.id, newAmount: editedAmount })
+        this.account.editAmount({ amountId: editedAmount.id, amountEdited: editedAmount })
     }
     showChanges() {
         this.account.showIncomes()
