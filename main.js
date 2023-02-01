@@ -75,8 +75,10 @@ amountListHTMLElement.addEventListener('click', async (e) => {
     if(amountActionName == 'edit') {
         editAmountModal.show()
         const editAmountView = new EditAmountView(defaultAccount)
+        editAmountView.startDinamicChangeInEditForm()
         const editedAmount = await editAmountView.getEditedAmount(amountId)
         editAmountView.saveEditedAmount(editedAmount)
+        editAmountView.finishDinimicChangeInEditForm()
         editAmountView.showChanges()
         editAmountModal.hide()
     } 

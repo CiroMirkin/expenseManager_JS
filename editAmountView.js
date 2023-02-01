@@ -46,6 +46,25 @@ export default class EditAmountView {
             })
         })
     }
+    changeContentOfCategoriesInputSelect() {
+        const categories = new Categories()
+        const editTypeSelect = document.getElementById('editAmountTypeSelect')
+        const editAmountCategorieSelect = document.getElementById('editAmountCategorieSelect')
+        if(editTypeSelect.value == 'income') {
+            editAmountCategorieSelect.innerHTML = categories.getSelectInputContentOfIncomeCategories()
+        } 
+        else if(editTypeSelect.value == 'expense') {
+            editAmountCategorieSelect.innerHTML = categories.getSelectInputContentOfExpenseCategories()
+        }
+    }
+    startDinamicChangeInEditForm() {
+        const editTypeSelect = document.getElementById('editAmountTypeSelect')
+        editTypeSelect.addEventListener('change', () => this.changeContentOfCategoriesInputSelect())
+    }
+    finishDinimicChangeInEditForm() {
+        const editTypeSelect = document.getElementById('editAmountTypeSelect')
+        editTypeSelect.removeEventListener('change', () => this.changeContentOfCategoriesInputSelect())
+    }
     saveEditedAmount(editedAmount) {
         this.account.editAmount({ amountId: editedAmount.id, amountEdited: editedAmount })
     }
