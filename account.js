@@ -55,7 +55,10 @@ export default class Account {
         const amountListElement = document.getElementById('amountList')
         amountListElement.innerHTML = list.map(amount =>`
             <li id="${amount.id}" class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="h5">${amount.amount}</div>
+                <div class="d-flex align-items-center">
+                <div class="py-1 px-2 d-flex justify-content-center align-items-center border border-secondary rounded">${amount.categorie.HTMLIcon}</div>
+                <div class="h5 mx-2 my-0">${amount.amount}</div>
+                </div>
                 <div>
                     <button class="btn btn-primary" amount-action="edit"><i class="bi bi-pencil"></i></button>
                     <button class="btn btn-danger" amount-action="delete"><i class="bi bi-trash3"></i></button>
