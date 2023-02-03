@@ -3,6 +3,7 @@ export default class Account {
         this.name = name
         this.allOfAmounts = []
     }
+    // DAO or content DAO
     firstInit() {
         console.info(`${this.name} account init`)
         this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
@@ -11,6 +12,10 @@ export default class Account {
             this.showAccountValues()
         }
     }
+    #saveAmounts(){
+        localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
+    }
+    // Domain
     logAmount(amount) {
         this.allOfAmounts.push(amount)
         this.#saveAmounts()
@@ -24,10 +29,6 @@ export default class Account {
     deleteAmount(amountId) {
         this.allOfAmounts = this.allOfAmounts.filter(amount => amount.id !== amountId)
         this.#saveAmounts()
-    }
-    #saveAmounts(){
-        localStorage.setItem(`total-${this.name}`, JSON.stringify(this.allOfAmounts))
-
     }
     #getIncomes() {
         return this.allOfAmounts.filter(amount => amount.type == 'income')
@@ -50,6 +51,7 @@ export default class Account {
     #getTotalAmount(){
         return this.#getTotalIncome() - this.#getTotalExpenses()
     }
+    // View
     #showListOfAmounts(list) {
         const amountListElement = document.getElementById('amountList')
         amountListElement.innerHTML = list.map(amount =>`
