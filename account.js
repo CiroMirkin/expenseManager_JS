@@ -93,4 +93,12 @@ export default class Account {
         })
         return simplifiedAmounts
     }
+    giveFormatOfAmountsForDisplayedOnTheChart(amounts) {
+        const amountsFormatted = [[], []]
+        Object.entries(amounts).forEach(([categorie, amount]) => {
+            amountsFormatted[0].push(categorie)
+            amountsFormatted[1].push(amount)
+        })
+        return amountsFormatted
+    }
 }
