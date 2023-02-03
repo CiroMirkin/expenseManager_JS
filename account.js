@@ -144,4 +144,10 @@ export default class Account {
         const [ categories, valueOfCategories ] = this.giveFormatOfAmountsForDisplayedOnTheChart(incomeListReduce)
         this.#showInChart(categories, valueOfCategories)
     }
+    showChartExpenses() {
+        const expenses = this.#getExpenses()
+        const expenseListReduce = this.onlyAmountAndCategorieInAmountsOf(expenses)
+        const [ categories, valueOfCategories ] = this.giveFormatOfAmountsForDisplayedOnTheChart(expenseListReduce)
+        this.#showInChart(categories, valueOfCategories)
+    }
 }
