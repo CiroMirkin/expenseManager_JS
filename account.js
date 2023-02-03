@@ -101,7 +101,7 @@ export default class Account {
         })
         return amountsFormatted
     }
-    showInChart(categories, valueOfCategories) {
+    #showInChart(categories, valueOfCategories) {
         const ctx = document.getElementById('chart');
         new Chart(ctx, {
             type: 'doughnut',
@@ -137,5 +137,11 @@ export default class Account {
                 }
               }],
         });
+    }
+    showChartIncome() {
+        const incomes = this.#getIncomes()
+        const incomeListReduce = this.onlyAmountAndCategorieInAmountsOf(incomes)
+        const [ categories, valueOfCategories ] = this.giveFormatOfAmountsForDisplayedOnTheChart(incomeListReduce)
+        this.#showInChart(categories, valueOfCategories)
     }
 }
