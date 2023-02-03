@@ -101,4 +101,41 @@ export default class Account {
         })
         return amountsFormatted
     }
+    showInChart(categories, valueOfCategories) {
+        const ctx = document.getElementById('chart');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [...categories],
+                datasets: [
+                    {
+                        data: [...valueOfCategories],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)'
+                        ],
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                  customCanvasBackgroundColor: {
+                    color: '#fff',
+                  }
+                }
+            },
+            plugins: [{
+                id: 'customCanvasBackgroundColor',
+                beforeDraw: (chart, args, options) => {
+                  const {ctx} = chart;
+                  ctx.save();
+                  ctx.globalCompositeOperation = 'destination-over';
+                  ctx.fillStyle = options.color || '#99ffff';
+                  ctx.fillRect(0, 0, chart.width, chart.height);
+                  ctx.restore();
+                }
+              }],
+        });
+    }
 }
