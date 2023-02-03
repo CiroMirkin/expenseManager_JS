@@ -1,5 +1,3 @@
-"use strict"
-// import Chart from './chart.js'
 export default class Account {
     constructor(name) {
         this.name = name
