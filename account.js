@@ -1,4 +1,5 @@
 "use strict"
+// import Chart from './chart.js'
 export default class Account {
     constructor(name) {
         this.name = name
@@ -77,5 +78,19 @@ export default class Account {
         acoountValuesHTMLElement.innerHTML = `<ul class="mx-3  rounded-2 border border-1 border-light-subtle border-opacity-50">
             <li><span class="fs-6 opacity-50">Total</span><div class="fs-1">${this.#getTotalAmount()}</div></li>
         </ul>`
+    }
+    onlyAmountAndCategorieInAmountsOf(amounts) {
+        amounts = amounts.map(amount => ({
+            amount: amount.amount,
+            categorie: amount.categorie.name
+        }))
+        const simplifiedAmounts = {}
+        amounts.forEach(amount => {
+            if (!simplifiedAmounts[amount.categorie]) {
+                simplifiedAmounts[amount.categorie] = 0;
+            }
+            simplifiedAmounts[amount.categorie] += amount.amount;
+        })
+        return simplifiedAmounts
     }
 }

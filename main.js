@@ -6,7 +6,7 @@ import EditAmountView from './editAmountView.js'
 
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
-
+defaultAccount.showChart()
 const changeNewAmountModalTitleTo = (newTitle) => {
     const newAmountModalTitle = document.getElementById('newAmountModalTitle')
     newAmountModalTitle.innerText = newTitle
