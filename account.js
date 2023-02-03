@@ -138,7 +138,7 @@ export default class Account {
               }],
         });
     }
-    showChartIncome() {
+    showChartIncomes() {
         const incomes = this.#getIncomes()
         const incomeListReduce = this.onlyAmountAndCategorieInAmountsOf(incomes)
         const [ categories, valueOfCategories ] = this.giveFormatOfAmountsForDisplayedOnTheChart(incomeListReduce)
