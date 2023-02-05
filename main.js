@@ -84,17 +84,18 @@ amountListHTMLElement.addEventListener('click', async (e) => {
         editAmountView.finishDinimicChangeInEditForm()
         editAmountModal.hide()
         defaultAccount.showAccountValues()
-        if(editedAmount.type == 'income') {
-            defaultAccount.showIncomes()
-            defaultAccount.showChartIncomes()
-        } 
-        else {
-            defaultAccount.showExpenses()
-            defaultAccount.showChartExpenses()
-        }
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
+    }
+    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
+    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
+        defaultAccount.showIncomes()
+        defaultAccount.showChartIncomes()
+    } 
+    else {
+        defaultAccount.showExpenses()
+        defaultAccount.showChartExpenses()
     }
 })
 
