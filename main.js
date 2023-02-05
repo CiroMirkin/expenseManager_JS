@@ -82,14 +82,12 @@ amountListHTMLElement.addEventListener('click', async (e) => {
         const editedAmount = await editAmountView.getEditedAmount(amountId)
         editAmountView.saveEditedAmount(editedAmount)
         editAmountView.finishDinimicChangeInEditForm()
-        editAmountView.showChanges()
         editAmountModal.hide()
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
-        defaultAccount.showIncomes()
-        defaultAccount.showAccountValues()
     }
+    defaultAccount.showAccountValues()
 })
 
 const getAmountActionName = (e) => {
