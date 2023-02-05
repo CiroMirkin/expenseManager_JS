@@ -6,7 +6,8 @@ import EditAmountView from './editAmountView.js'
 
 const defaultAccount = new Account('default')
 defaultAccount.firstInit()
-defaultAccount.showChart()
+defaultAccount.showChartIncomes()
+
 const changeNewAmountModalTitleTo = (newTitle) => {
     const newAmountModalTitle = document.getElementById('newAmountModalTitle')
     newAmountModalTitle.innerText = newTitle
@@ -33,12 +34,14 @@ amountTypeNavigation.addEventListener('click', (e) => {
        if(e.target.id == 'incomeBtnInAmountTypeNavigation') {
             toggleAmountTypeNavigationOptions()
             defaultAccount.showIncomes()
+            defaultAccount.showChartIncomes()
             changeNewAmountModalTitleTo('New Income')
             changeCategoriesInNewAmountModal(categories.getSelectInputContentOfIncomeCategories())
         } 
         else if (e.target.id == 'expenseBtnInAmountTypeNavigation') {
             toggleAmountTypeNavigationOptions()
             defaultAccount.showExpenses()
+            defaultAccount.showChartExpenses()
             changeNewAmountModalTitleTo('New expense')
             changeCategoriesInNewAmountModal(categories.getSelectInputContentOfExpenseCategories())
         } 
