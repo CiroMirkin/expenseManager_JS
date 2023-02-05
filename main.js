@@ -83,11 +83,19 @@ amountListHTMLElement.addEventListener('click', async (e) => {
         editAmountView.saveEditedAmount(editedAmount)
         editAmountView.finishDinimicChangeInEditForm()
         editAmountModal.hide()
+        defaultAccount.showAccountValues()
+        if(editedAmount.type == 'income') {
+            defaultAccount.showIncomes()
+            defaultAccount.showChartIncomes()
+        } 
+        else {
+            defaultAccount.showExpenses()
+            defaultAccount.showChartExpenses()
+        }
     } 
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
     }
-    defaultAccount.showAccountValues()
 })
 
 const getAmountActionName = (e) => {
