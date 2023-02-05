@@ -57,13 +57,24 @@ openModalForAddNewAmount.addEventListener('click', () => {
     addNewAmountModal.show()
 })
 
+const showChanges = () => {
+    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
+    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
+        defaultAccount.showIncomes()
+        defaultAccount.showChartIncomes()
+        return 'income' // es solo para terminar la funcion
+    } 
+    defaultAccount.showExpenses()
+    defaultAccount.showChartExpenses()
+}
+
 const newAmountView = new NewAmountView(defaultAccount)
 const addAmountSubmitInputBtn = document.getElementById('addAmountSubmitInputBtn')
 addAmountSubmitInputBtn.addEventListener('click', (e) => {
     e.preventDefault()
     const newAmount = newAmountView.getNewAmount()
     newAmountView.saveNewAmount(newAmount)
-    newAmountView.showChanges()
+    showChanges()
     newAmountView.cleanInputs()
     addNewAmountModal.hide()
 })
@@ -88,15 +99,7 @@ amountListHTMLElement.addEventListener('click', async (e) => {
     else if(amountActionName == 'delete') {
         defaultAccount.deleteAmount(amountId)
     }
-    const incomeBtnInAmountTypeNavigation = document.getElementById('incomeBtnInAmountTypeNavigation')
-    if(incomeBtnInAmountTypeNavigation.classList[1] == 'active') {
-        defaultAccount.showIncomes()
-        defaultAccount.showChartIncomes()
-    } 
-    else {
-        defaultAccount.showExpenses()
-        defaultAccount.showChartExpenses()
-    }
+    showChanges()
 })
 
 const getAmountActionName = (e) => {
