@@ -58,8 +58,4 @@ export default class NewAmountView {
     saveNewAmount(newAmount) {
         this.account.logAmount(newAmount)
     }
-    showChanges() {
-        this.account.showIncomes()
-        this.account.showAccountValues()
-    }
 }
