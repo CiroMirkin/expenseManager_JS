@@ -10,7 +10,7 @@ export default class Account {
         console.info(`${this.name} account init`)
         this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
         if(!!this.allOfAmounts.length){
-            this.#showIncomes()
+            this.showIncomes()
             this.showAccountValues()
         }
     }
