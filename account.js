@@ -12,6 +12,7 @@ export default class Account {
         if(!!this.allOfAmounts.length){
             this.showIncomes()
             this.showAccountValues()
+            this.showChartTotal()
         }
     }
     #saveAmounts(){
@@ -55,13 +56,10 @@ export default class Account {
     }
     // View
     showIncomes() {
-        this.accountView.showListOfAmounts(this.#getIncomes())
     }
     showExpenses() {
-        this.accountView.showListOfAmounts(this.#getExpenses())
     }
     showAccountValues(){
-        this.accountView.showAmountTotalAccount(this.#getTotalAmount())
     }
     onlyAmountAndCategorieInAmountsOf(amounts) {
         amounts = amounts.map(amount => ({
@@ -85,16 +83,19 @@ export default class Account {
         })
         return amountsFormatted
     }
+    showChartTotal() {
+
+    }
     showChartIncomes() {
         const incomes = this.#getIncomes()
         const incomeListReduce = this.onlyAmountAndCategorieInAmountsOf(incomes)
         const [ categories, valueOfCategories ] = this.giveFormatOfAmountsForDisplayedOnTheChart(incomeListReduce)
-        this.accountView.showInChart(categories, valueOfCategories)
+    
     }
     showChartExpenses() {
         const expenses = this.#getExpenses()
         const expenseListReduce = this.onlyAmountAndCategorieInAmountsOf(expenses)
         const [ categories, valueOfCategories ] = this.giveFormatOfAmountsForDisplayedOnTheChart(expenseListReduce)
-        this.accountView.showInChart(categories, valueOfCategories)
+    
     }
 }

@@ -13,72 +13,24 @@
 </head>
 
 <body>
-    <header id="accountValues" class="my-3 mb-5 header"></header>
     <main class="container">
       <div class="mb-4 d-flex justify-content-center">
         <div style="width: 270px;">
           <canvas id="chart"  width="270"></canvas>
         </div>      
       </div>
-        <ul id="amountTypeNavigation" class="nav nav-tabs">
-            <li class="nav-item">
-              <button id="incomeBtnInAmountTypeNavigation" class="nav-link active">Incomes</button>
-            </li>
-            <li class="nav-item">
-                <button id="expenseBtnInAmountTypeNavigation" class="nav-link">Expenses</button>
-            </li>
-        </ul>
-        <div class="w-100 d-block">
-            <ul id="amountList" class="list-group list-group-flush overflow-y-auto" style="height: 150px;"></ul>
-            <div id="openModalForAddNewAmount" class="w-100 px-5 d-flex justify-content-end">
-                <button class="btn btn-primary rounded"><i class="bi bi-plus-lg"></i></button>
-            </div>
-        </div>
+      <form>
+        <input type="number" id="amountInput" class="form-control mb-2" placeholder="Amount...">
+        <select id="amountTypeSelect" class="form-select mb-2">
+            <option value="none">...</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+        </select>
+        <input type="text" id="CommentInput" class="form-control mb-2" placeholder="Comment...">
+      </form>
+       
     </main>
-    <div class="modal fade" id="newAmountModal" tabindex="-1" role="dialog" aria-labelledby="newAmountModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 id="newAmountModalTitle" class="modal-title">New income</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <input type="number" id="amountInput" class="form-control mb-2" placeholder="Input amount...">
-                    <select id="amountCategorieSelect" class="form-select mb-2"></select>
-                    <input type="text" id="commentInput" class="form-control mb-2" placeholder="Input a comment...">
-                    <button type="submit" id="addAmountSubmitInputBtn" class="btn btn-primary">Add</button>
-                </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    <div class="modal" id="editAmountModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="editAmountModalLabel">Edit amount</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <input type="number" id="editAmountInput" class="form-control mb-2" placeholder="Input amount...">
-                    <select id="editAmountTypeSelect" class="form-select mb-2">
-                        <option value="none">...</option>
-                        <option value="income">Income</option>
-                        <option value="expense">Expense</option>
-                    </select>
-                    <select id="editAmountCategorieSelect" class="form-select mb-2"></select>
-                    <input type="text" id="editCommentInput" class="form-control mb-2" placeholder="Input a comment...">
-                    <input type="date" id="editDateInput">
-                </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="saveChangesInAmountBtn" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-    </div>      
+      
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./main.js" type="module"></script>
