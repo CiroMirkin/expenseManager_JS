@@ -10,7 +10,7 @@ export default class Account {
         if(!!this.allOfAmounts.length){
             this.showIncomes()
             this.showExpenses()
-            this.showAccountValues()
+            this.showAccountValue()
             this.showChartTotal()
         }
     }
@@ -68,7 +68,7 @@ export default class Account {
             `<li id="${expense.id}" class="list-group-item d-flex justify-content-between align-items-start">${expense.amount}</li>`
         )).join('')
     }
-    showAccountValues(){
+    showAccountValue(){
     }
     onlyAmountAndCategorieInAmountsOf(amounts) {
         amounts = amounts.map(amount => ({
