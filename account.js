@@ -54,6 +54,11 @@ export default class Account {
     }
     // View
     showIncomes() {
+        const incomes = this.#getIncomes()
+        const incomeListElement = document.getElementById('incomeList')
+        incomeListElement.innerHTML = incomes.map(income => (
+            `<li id="${income.id}" class="list-group-item d-flex justify-content-between align-items-start">${income.amount}</li>`
+        )).join('')
     }
     showExpenses() {
     }
