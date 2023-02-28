@@ -9,6 +9,7 @@ export default class Account {
         this.allOfAmounts = JSON.parse(localStorage.getItem(`total-${this.name}`)) || []
         if(!!this.allOfAmounts.length){
             this.showIncomes()
+            this.showExpenses()
             this.showAccountValues()
             this.showChartTotal()
         }
@@ -61,6 +62,11 @@ export default class Account {
         )).join('')
     }
     showExpenses() {
+        const expenses = this.#getExpenses()
+        const expenseListElement = document.getElementById('expenseList')
+        expenseListElement.innerHTML = expenses.map(expense => (
+            `<li id="${expense.id}" class="list-group-item d-flex justify-content-between align-items-start">${expense.amount}</li>`
+        )).join('')
     }
     showAccountValues(){
     }
