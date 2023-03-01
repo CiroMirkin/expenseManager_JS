@@ -69,6 +69,7 @@ export default class Account {
         )).join('')
     }
     showAccountValue(){
+        document.getElementById('accountValue').innerText = this.#getTotalAmount()
     }
     onlyAmountAndCategorieInAmountsOf(amounts) {
         amounts = amounts.map(amount => ({
