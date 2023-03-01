@@ -19,7 +19,7 @@ const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
 const getNewAmountFromForm = () => ({
     id: 1,
-    amount: amountInput.value,
+    amount: Number(amountInput.value),
     type: amountTypeSelect.value,
     comment: commentInput.value
 })
