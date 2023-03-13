@@ -4,6 +4,9 @@ export default class Account {
         this.allOfAmounts = []
     }
     // Domain
+    setSavedAmounts(savedAmounts) {
+        this.allOfAmounts = [...this.allOfAmounts, ...savedAmounts]
+    }
     logAmount(amount) {
         this.allOfAmounts.push(amount)
         this.#saveAmounts()
