@@ -7,6 +7,7 @@ export default class AccountDAO {
         if(!!allOfAmounts.length){
             return allOfAmounts
         }
+        return []
     }
     saveAmounts(amounts){
         localStorage.setItem(`total-${this.accountName}`, JSON.stringify(amounts))
