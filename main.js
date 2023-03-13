@@ -3,8 +3,10 @@ import Account from './account.js';
 import AccountView from './accountView.js' 
 import AccountDAO from './accountDAO.js'
 
-const defaultAccount = new Account('default')
-defaultAccount.firstInit()
+const accountName = 'default'
+const defaultAccount = new Account(accountName)
+const accountView = new AccountView()
+const accountDAO = new AccountDAO(accountName)
 
 const newAmountForm = document.getElementById('newAmountForm')
 newAmountForm.addEventListener('submit', (e) => {
@@ -12,9 +14,9 @@ newAmountForm.addEventListener('submit', (e) => {
     const newAmount = getNewAmountFromForm()
     cleanForm()
     defaultAccount.logAmount(newAmount)
-    defaultAccount.showIncomes()
-    defaultAccount.showExpenses()
-    defaultAccount.showAccountValue()
+    accountView.showIncomes()
+    accountView.showExpenses()
+    accountView.showAccountValue()
 })
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
