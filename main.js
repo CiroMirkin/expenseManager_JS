@@ -8,6 +8,8 @@ const defaultAccount = new Account(accountName)
 const accountView = new AccountView()
 const accountDAO = new AccountDAO(accountName)
 
+defaultAccount.setSavedAmounts(accountDAO.getSavedAmounts())
+
 const newAmountForm = document.getElementById('newAmountForm')
 newAmountForm.addEventListener('submit', (e) => {
     e.preventDefault()
