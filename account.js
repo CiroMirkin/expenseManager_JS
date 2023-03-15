@@ -39,6 +39,9 @@ export default class Account {
         expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
+	getAllAmounts() {
+		return this.allOfAmounts
+	}
     getTotalAmount(){
         return this.#getTotalIncome() - this.#getTotalExpenses()
     }
