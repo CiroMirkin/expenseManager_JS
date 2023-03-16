@@ -9,17 +9,14 @@ export default class Account {
     }
     logAmount(amount) {
         this.allOfAmounts.push(amount)
-        this.#saveAmounts()
     }
     editAmount({ amountId, amountEdited }) {
         this.allOfAmounts = this.allOfAmounts.map(amount => {
             return amount.id == amountId ? {...amountEdited} : amount
         })
-        this.#saveAmounts()
     }
     deleteAmount(amountId) {
         this.allOfAmounts = this.allOfAmounts.filter(amount => amount.id !== amountId)
-        this.#saveAmounts()
     }
     getIncomes() {
         return this.allOfAmounts.filter(amount => amount.type == 'income')
@@ -29,13 +26,13 @@ export default class Account {
     }
     getTotalIncome(){
         let totalIncome = 0
-        const income = this.#getIncomes()
+        const income = this.getIncomes()
         income.forEach(amount => totalIncome += amount.amount)
         return totalIncome
     }
     getTotalExpenses() {
         let totalExpense = 0
-        const expenses = this.#getExpenses()
+        const expenses = this.getExpenses()
         expenses.forEach(amount => totalExpense += amount.amount)
         return totalExpense
     }
@@ -43,6 +40,6 @@ export default class Account {
 		return this.allOfAmounts
 	}
     getTotalAmount(){
-        return this.#getTotalIncome() - this.#getTotalExpenses()
+        return this.getTotalIncome() - this.getTotalExpenses()
     }
 }

@@ -1,6 +1,39 @@
 export default class AccountView {
     constructor() {
-
+        this.chart = new Chart(document.getElementById('chart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['', ''],
+                datasets: [
+                    {
+                        data: [0, 0],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)'
+                        ],
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                  customCanvasBackgroundColor: {
+                    color: '#fff',
+                  }
+                }
+            },
+            plugins: [{
+                id: 'customCanvasBackgroundColor',
+                beforeDraw: (chart, args, options) => {
+                  const {ctx} = chart;
+                  ctx.save();
+                  ctx.globalCompositeOperation = 'destination-over';
+                  ctx.fillStyle = options.color || '#99ffff';
+                  ctx.fillRect(0, 0, chart.width, chart.height);
+                  ctx.restore();
+                }
+              }],
+        })
     }
     // View
     showIncomes(incomes) {
@@ -40,8 +73,10 @@ export default class AccountView {
         })
         return amountsFormatted
     }
-    showChartTotal(amounts) {
-
+    showChartTotal(totalIncomes, totalExpenses) {
+        this.chart.data.datasets[0].data = [totalIncomes, totalExpenses]
+        this.chart.data.labels = ['Incomes', 'Expenses']
+        this.chart.update()
     }
     showChartIncomes(incomes) {
         const incomeListReduce = this.onlyAmountAndCategorieInAmountsOf(incomes)

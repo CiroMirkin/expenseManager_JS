@@ -16,9 +16,13 @@ newAmountForm.addEventListener('submit', (e) => {
     const newAmount = getNewAmountFromForm()
     cleanForm()
     defaultAccount.logAmount(newAmount)
-    accountView.showIncomes()
-    accountView.showExpenses()
-    accountView.showAccountValue()
+    accountView.showIncomes(defaultAccount.getIncomes())
+    accountView.showExpenses(defaultAccount.getExpenses())
+    accountView.showAccountValue(defaultAccount.getTotalAmount())
+    accountView.showChartTotal(
+        defaultAccount.getTotalIncome(), 
+        defaultAccount.getTotalExpenses()
+    )
 })
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
