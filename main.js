@@ -28,6 +28,7 @@ newAmountForm.addEventListener('submit', (e) => {
     cleanForm()
     defaultAccount.logAmount(newAmount)
     uptadeView(accountView, defaultAccount)
+    accountDAO.saveAmounts(defaultAccount.getAllAmounts())
 })
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
