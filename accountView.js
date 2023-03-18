@@ -45,7 +45,7 @@ export default class AccountView {
     showExpenses(expenses) {
         const expenseListElement = document.getElementById('expenseList')
         expenseListElement.innerHTML = expenses.map(expense => (
-            `<li id="${expense.id}" class="list-group-item d-flex justify-content-between align-items-start">${expense.amount}</li>`
+            `<li id="${expense.id}" class="list-group-item border border-danger-subtle d-flex justify-content-between align-items-start">${expense.amount}</li>`
         )).join('')
     }
     showAccountValue(value){

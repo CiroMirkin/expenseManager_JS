@@ -11,7 +11,7 @@
   <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
 </head>
 <body>
-  <main class="container">
+  <main class="container mt-5 mb-3">
     <div class="row">
       <div class="col mb-4 d-flex justify-content-center">
         <div style="width: 270px;">
@@ -19,16 +19,20 @@
         </div>   
         <p id="accountValue" class="h3 account-value"></p>   
       </div>
-      <form id="newAmountForm" class="col card p-3">
-        <input type="number" id="amountInput" class="form-control mb-2" placeholder="Amount...">
-        <select id="amountTypeSelect" class="form-select mb-2">
-          <option value="none">...</option>
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
-        <input type="text" id="commentInput" class="form-control mb-2" placeholder="Comment...">
-        <button type="submit" class="btn">Add</button>
-      </form>
+      <div class="col align-self-center">
+        <form id="newAmountForm" class="p-3 border border-opacity-50 border-1 rounded">
+          <input type="number" id="amountInput" class="form-control mb-2" placeholder="Amount...">
+          <select id="amountTypeSelect" class="form-select mb-2">
+            <option value="none">...</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <input type="text" id="commentInput" class="form-control mb-2" placeholder="Comment...">
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
     </div>
   </main>
 	<div class="container text-center">
