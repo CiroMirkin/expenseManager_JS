@@ -8,7 +8,18 @@ const defaultAccount = new Account(accountName)
 const accountView = new AccountView()
 const accountDAO = new AccountDAO(accountName)
 
+const uptadeView = (view, account) => {
+    view.showIncomes(account.getIncomes())
+    view.showExpenses(account.getExpenses())
+    view.showAccountValue(account.getTotalAmount())
+    view.showChartTotal(
+        account.getTotalIncome(), 
+        account.getTotalExpenses()
+    )
+}
+
 defaultAccount.setSavedAmounts(accountDAO.getSavedAmounts())
+uptadeView(accountView, defaultAccount)
 
 const newAmountForm = document.getElementById('newAmountForm')
 newAmountForm.addEventListener('submit', (e) => {
@@ -16,13 +27,7 @@ newAmountForm.addEventListener('submit', (e) => {
     const newAmount = getNewAmountFromForm()
     cleanForm()
     defaultAccount.logAmount(newAmount)
-    accountView.showIncomes(defaultAccount.getIncomes())
-    accountView.showExpenses(defaultAccount.getExpenses())
-    accountView.showAccountValue(defaultAccount.getTotalAmount())
-    accountView.showChartTotal(
-        defaultAccount.getTotalIncome(), 
-        defaultAccount.getTotalExpenses()
-    )
+    uptadeView(accountView, defaultAccount)
 })
 const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
