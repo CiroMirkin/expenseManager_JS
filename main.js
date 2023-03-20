@@ -34,11 +34,14 @@ const amountInput = document.getElementById('amountInput')
 const amountTypeSelect = document.getElementById('amountTypeSelect')
 const commentInput = document.getElementById('commentInput')
 const getNewAmountFromForm = () => ({
-    id: 1,
+    id: getAnID(),
     amount: Number(amountInput.value),
     type: amountTypeSelect.value,
     comment: commentInput.value
 })
+const getAnID = () => {
+    return Date.now().toString(35) + Math.random().toString(36).slice(2)
+}
 const cleanForm = () => {
     amountInput.value = ''
     amountTypeSelect.value = 'none'
