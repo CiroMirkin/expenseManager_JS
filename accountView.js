@@ -39,13 +39,43 @@ export default class AccountView {
     showIncomes(incomes) {
         const incomeListElement = document.getElementById('incomeList')
         incomeListElement.innerHTML = incomes.map(income => (
-            `<li id="${income.id}" class="list-group-item d-flex justify-content-between align-items-start">${income.amount}</li>`
+            `<li id="${income.id}" class="list-group-item border border-primary-subtle">
+                <header class="d-flex justify-content-between align-items-center">${income.amount}
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#${income.id}amountInfo" aria-expanded="false" aria-controls="${income.id}amountInfo">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                </header>
+                <div class="collapse" id="${income.id}amountInfo">
+                    <div class="d-flex flex-column justify-content-start align-items-start">
+                        <p class="mt-1 mb-2">${income.comment}</p>
+                        <div class="d-block m-0">
+                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </li>`
         )).join('')
     }
     showExpenses(expenses) {
         const expenseListElement = document.getElementById('expenseList')
         expenseListElement.innerHTML = expenses.map(expense => (
-            `<li id="${expense.id}" class="list-group-item border border-danger-subtle d-flex justify-content-between align-items-start">${expense.amount}</li>`
+            `<li id="${expense.id}" class="list-group-item border border-danger-subtle">
+                <header class="d-flex justify-content-between align-items-center">${expense.amount}
+                    <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#${expense.id}amountInfo" aria-expanded="false" aria-controls="${expense.id}amountInfo">
+                        <i class="bi bi-info-circle"></i>
+                    </button>
+                </header>
+                <div class="collapse" id="${expense.id}amountInfo">
+                    <div class="d-flex flex-column justify-content-start align-items-start">
+                        <p class="mt-1 mb-2">${expense.comment}</p>
+                        <div class="d-block m-0">
+                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </li>`
         )).join('')
     }
     showAccountValue(value){
