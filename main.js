@@ -48,3 +48,18 @@ const cleanForm = () => {
     amountTypeSelect.value = 'none'
     commentInput.value = ''
 }
+
+const amountListsElement = document.getElementById('amountLists')
+amountListsElement.addEventListener('click', (e) => {
+    if(isAnAmount(e)) {
+        // const getTypeOfAction ;
+        // const getTypeOfAmount ;
+    }
+})
+const isAnAmount = (e) => {
+    const amountIdWhenClickInButton = e.target.parentElement.parentElement.parentElement.parentElement.id
+    const amountIdWhenClickInButtonOnIncon = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
+    const whenClickInButton = amountIdWhenClickInButton.split('-')[0] == 'amount'
+    const whenClickInButtonOnIcon = amountIdWhenClickInButtonOnIncon.split('-')[0] == 'amount'
+    return whenClickInButton !== whenClickInButtonOnIcon
+}
