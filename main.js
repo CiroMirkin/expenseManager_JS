@@ -52,6 +52,8 @@ const cleanForm = () => {
 const amountListsElement = document.getElementById('amountLists')
 amountListsElement.addEventListener('click', (e) => {
     if(isAnAmount(e)) {
+        const action = getClickedAction(e)
+        console.log(action)
         // const getTypeOfAction ;
         // const getTypeOfAmount ;
     }
@@ -62,4 +64,12 @@ const isAnAmount = (e) => {
     const whenClickInButton = amountIdWhenClickInButton.split('-')[0] == 'amount'
     const whenClickInButtonOnIcon = amountIdWhenClickInButtonOnIncon.split('-')[0] == 'amount'
     return whenClickInButton !== whenClickInButtonOnIcon
+}
+const getClickedAction = (e) => {
+    const amountActionWhenClickInButton = e.target
+    const amountActionWhenClickInButtonOnIcon = e.target.parentElement
+    if(amountActionWhenClickInButtonOnIcon.classList[0] == 'btn') {
+        return amountActionWhenClickInButtonOnIcon
+    }
+    return amountActionWhenClickInButton
 }
