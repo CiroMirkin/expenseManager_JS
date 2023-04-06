@@ -60,9 +60,9 @@ amountListsElement.addEventListener('click', (e) => {
 })
 const isAnAmount = (e) => {
     const amountIdWhenClickInButton = e.target.parentElement.parentElement.parentElement.parentElement.id
-    const amountIdWhenClickInButtonOnIncon = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
+    const amountIdWhenClickInButtonOnIcon = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
     const whenClickInButton = amountIdWhenClickInButton.split('-')[0] == 'amount'
-    const whenClickInButtonOnIcon = amountIdWhenClickInButtonOnIncon.split('-')[0] == 'amount'
+    const whenClickInButtonOnIcon = amountIdWhenClickInButtonOnIcon.split('-')[0] == 'amount'
     return whenClickInButton !== whenClickInButtonOnIcon
 }
 const getClickedAction = (e) => {
