@@ -53,9 +53,13 @@ const amountListsElement = document.getElementById('amountLists')
 amountListsElement.addEventListener('click', (e) => {
     if(isAnAmount(e)) {
         const action = getClickedAction(e)
-        console.log(action)
-        // const getTypeOfAction ;
-        // const getTypeOfAmount ;
+        const amountId = getAmountId(e)
+        const typeOfAction = action.attributes.action.value
+        if(typeOfAction == 'delete') {
+            defaultAccount.deleteAmount(amountId)
+            uptadeView(accountView, defaultAccount)
+            accountDAO.saveAmounts(defaultAccount.getAllAmounts())
+        }
     }
 })
 const isAnAmount = (e) => {
@@ -72,4 +76,11 @@ const getClickedAction = (e) => {
         return amountActionWhenClickInButtonOnIcon
     }
     return amountActionWhenClickInButton
+}
+const getAmountId = (e) => {
+    const amountIdWhenClickInButton = e.target.parentElement.parentElement.parentElement.parentElement.id
+    const amountIdWhenClickInButtonOnIcon = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
+    const whenClickInButton = amountIdWhenClickInButton.split('-')[1]
+    const whenClickInButtonOnIcon = amountIdWhenClickInButtonOnIcon.split('-')[1]
+    return (whenClickInButton || whenClickInButtonOnIcon)
 }

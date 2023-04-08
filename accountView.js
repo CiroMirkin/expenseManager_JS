@@ -49,8 +49,8 @@ export default class AccountView {
                     <div class="d-flex flex-column justify-content-start align-items-start">
                         <p class="mt-1 mb-2">${income.comment}</p>
                         <div class="d-block m-0">
-                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
-                            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></button>
+                            <button type="button" class="btn btn-sm btn-primary" action="edit"><i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger" action="delete"><i class="bi bi-trash3"></i></button>
                         </div>
                     </div>
                 </div>
@@ -70,8 +70,8 @@ export default class AccountView {
                     <div class="d-flex flex-column justify-content-start align-items-start">
                         <p class="mt-1 mb-2">${expense.comment}</p>
                         <div class="d-block m-0">
-                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-pencil"></i></button>
-                            <button type="button" class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></button>
+                            <button type="button" class="btn btn-sm btn-primary" action="edit"><i class="bi bi-pencil"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger" action="delete"><i class="bi bi-trash3"></i></button>
                         </div>
                     </div>
                 </div>
