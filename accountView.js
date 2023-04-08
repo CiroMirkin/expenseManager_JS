@@ -8,8 +8,8 @@ export default class AccountView {
                     {
                         data: [0, 0],
                         backgroundColor: [
-                            'rgb(255, 99, 132)',
                             'rgb(54, 162, 235)',
+                            'rgb(255, 99, 132)',
                             'rgb(255, 205, 86)'
                         ],
                     }
