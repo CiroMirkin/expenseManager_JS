@@ -18,6 +18,9 @@ export default class Account {
     deleteAmount(amountId) {
         this.allOfAmounts = this.allOfAmounts.filter(amount => amount.id !== amountId)
     }
+    getAmountByID(id) {
+        return this.allOfAmounts.filter(amount => amount.id == id)[0]
+    }
     getIncomes() {
         return this.allOfAmounts.filter(amount => amount.type == 'income')
     }
