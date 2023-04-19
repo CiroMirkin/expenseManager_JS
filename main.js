@@ -30,20 +30,25 @@ newAmountForm.addEventListener('submit', (e) => {
     uptadeView(accountView, defaultAccount)
     accountDAO.saveAmounts(defaultAccount.getAllAmounts())
 })
-const amountInput = document.getElementById('amountInput')
-const amountTypeSelect = document.getElementById('amountTypeSelect')
-const commentInput = document.getElementById('commentInput')
-const getNewAmountFromForm = () => ({
-    id: getAnID(),
-    amount: formatAmount(amountInput.value),
-    type: amountTypeSelect.value,
-    comment: commentInput.value
-})
+const getNewAmountFromForm = () => {
+    const amountInput = document.getElementById('amountInput')
+    const amountTypeSelect = document.getElementById('amountTypeSelect')
+    const commentInput = document.getElementById('commentInput')
+    return {
+        id: getAnID(),
+        amount: formatAmount(amountInput.value),
+        type: amountTypeSelect.value,
+        comment: commentInput.value
+    }
+}
 const getAnID = () => {
     return Date.now().toString(35) + Math.random().toString(36).slice(2)
 }
 const formatAmount = (amount) => Number(amount)
 const cleanForm = () => {
+    const amountInput = document.getElementById('amountInput')
+    const amountTypeSelect = document.getElementById('amountTypeSelect')
+    const commentInput = document.getElementById('commentInput')
     amountInput.value = ''
     amountTypeSelect.value = 'none'
     commentInput.value = ''
