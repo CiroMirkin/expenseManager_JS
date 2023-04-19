@@ -102,5 +102,7 @@ const disabledAmount = (amountId) => {
     amount.classList.add('text-secondary')
 }
 const showAmountInForm = (amount) => {
-
+    document.getElementById('amountInput').value = amount.amount
+    document.getElementById('amountTypeSelect').value = amount.type
+    document.getElementById('commentInput').value = amount.comment
 }
