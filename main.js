@@ -60,6 +60,9 @@ amountListsElement.addEventListener('click', (e) => {
             uptadeView(accountView, defaultAccount)
             accountDAO.saveAmounts(defaultAccount.getAllAmounts())
         }
+        if(typeOfAction == 'edit') {
+            disabledAmount(amountId)
+        }
     }
 })
 const isAnAmount = (e) => {
@@ -83,4 +86,11 @@ const getAmountId = (e) => {
     const whenClickInButton = amountIdWhenClickInButton.split('-')[1]
     const whenClickInButtonOnIcon = amountIdWhenClickInButtonOnIcon.split('-')[1]
     return (whenClickInButton || whenClickInButtonOnIcon)
+}
+
+const disabledAmount = (amountId) => {
+    const amount = document.getElementById(`amount-${amountId}`)
+    amount.classList.replace('border-primary-subtle', 'border-secondary-subtle')
+    amount.classList.add('disabled')
+    amount.classList.add('text-secondary')
 }
