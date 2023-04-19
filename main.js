@@ -62,6 +62,8 @@ amountListsElement.addEventListener('click', (e) => {
         }
         if(typeOfAction == 'edit') {
             disabledAmount(amountId)
+            const amount = defaultAccount.getAmountByID(amountId)
+            showAmountInForm(amount)
         }
     }
 })
@@ -93,4 +95,7 @@ const disabledAmount = (amountId) => {
     amount.classList.replace('border-primary-subtle', 'border-secondary-subtle')
     amount.classList.add('disabled')
     amount.classList.add('text-secondary')
+}
+const showAmountInForm = (amount) => {
+
 }
