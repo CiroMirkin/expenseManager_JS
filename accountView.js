@@ -79,7 +79,7 @@ export default class AccountView {
         )).join('')
     }
     showAccountValue(value){
-        document.getElementById('accountValue').innerText = value
+        document.getElementById('accountValue').innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value)
     }
     onlyAmountAndCategorieInAmountsOf(amounts) {
         amounts = amounts.map(amount => ({
