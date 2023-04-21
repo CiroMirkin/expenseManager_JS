@@ -18,7 +18,7 @@ export default class AccountView {
             options: {
                 plugins: {
                   customCanvasBackgroundColor: {
-                    color: '#fff',
+                    color: '#ffffff00',
                   }
                 }
             },
