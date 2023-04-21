@@ -40,7 +40,7 @@ export default class AccountView {
         const incomeListElement = document.getElementById('incomeList')
         incomeListElement.innerHTML = incomes.map(income => (
             `<li id="amount-${income.id}" class="list-group-item mb-1 border border-primary-subtle">
-                <header class="d-flex justify-content-between align-items-center">${income.amount}
+                <header class="d-flex justify-content-between align-items-center">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income.amount)}
                     <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#${income.id}amountInfo" aria-expanded="false" aria-controls="${income.id}amountInfo">
                         <i class="bi bi-info-circle"></i>
                     </button>
@@ -61,7 +61,7 @@ export default class AccountView {
         const expenseListElement = document.getElementById('expenseList')
         expenseListElement.innerHTML = expenses.map(expense => (
             `<li id="amount-${expense.id}" class="list-group-item mb-1 border border-danger-subtle">
-                <header class="d-flex justify-content-between align-items-center">${expense.amount}
+                <header class="d-flex justify-content-between align-items-center">${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(-expense.amount)}
                     <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#${expense.id}amountInfo" aria-expanded="false" aria-controls="${expense.id}amountInfo">
                         <i class="bi bi-info-circle"></i>
                     </button>
