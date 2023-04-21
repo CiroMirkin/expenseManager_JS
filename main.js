@@ -69,6 +69,8 @@ amountListsElement.addEventListener('click', (e) => {
             disabledAmount(amountId)
             const amount = defaultAccount.getAmountByID(amountId)
             showAmountInForm(amount)
+            defaultAccount.deleteAmount(amountId)
+            accountDAO.saveAmounts(defaultAccount.getAllAmounts())
         }
     }
 })
