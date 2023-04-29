@@ -18,8 +18,18 @@ const uptadeView = (view, account) => {
     )
 }
 
-defaultAccount.setSavedAmounts(accountDAO.getSavedAmounts())
-uptadeView(accountView, defaultAccount)
+const firstAppStart = ({ account, accountDAO, accountView }) => {
+    const amountsSaved = accountDAO.getSavedAmounts()
+    if(!amountsSaved.length) {
+        accountView.ShowEmptyIncomeList()
+        accountView.ShowEmptyExpenseList()
+    }
+    else {
+        account.setSavedAmounts(amountsSaved)
+        uptadeView(accountView, account)
+    }
+}
+firstAppStart({ account: defaultAccount, accountDAO, accountView})
 
 const newAmountForm = document.getElementById('newAmountForm')
 newAmountForm.addEventListener('submit', (e) => {
