@@ -78,6 +78,16 @@ export default class AccountView {
             </li>`
         )).join('')
     }
+    ShowEmptyIncomeList() {
+        document.getElementById('incomeList').innerHTML = `<li class="list-group-item mb-1 border border-primary-subtle">
+            <header class="d-flex justify-content-between align-items-center">There're no incomes.</header>
+        </li>`
+    }
+    ShowEmptyExpenseList() {
+        document.getElementById('expenseList').innerHTML = `<li class="list-group-item mb-1 border border-danger-subtle">
+            <header class="d-flex justify-content-between align-items-center">There're no expenses.</header>
+        </li>`
+    }
     showAccountValue(value){
         document.getElementById('accountValue').innerText = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value)
     }
