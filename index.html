@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <!-- Bootstrap icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <!-- Own -->
   <link rel="stylesheet" href="./styles.css">
   <link rel="shortcut icon" href="https://i.postimg.cc/rssXQspr/expansemanager.png" type="image/x-icon">
@@ -16,14 +18,14 @@
 <body>
   <main class="container mt-5 mb-3">
     <div class="row">
-      <div class="col position-relative mb-4 d-flex justify-content-center">
+      <div class="col position-relative mb-4 d-flex justify-content-center animate__animated animate__fadeInLeft">
         <div style="width: 270px;">
           <canvas id="chart"  width="270"></canvas>
         </div>   
         <p id="accountValue" class="position-absolute z-n1 h-100 d-flex align-items-center h1 account-value">$0.00</p>   
       </div>
       <div class="col align-self-center">
-        <form id="newAmountForm" class="p-3 border border-opacity-50 border-1 rounded">
+        <form id="newAmountForm" class="p-3 border border-opacity-50 border-1 rounded animate__animated animate__fadeInRight">
           <input type="number" id="amountInput" class="form-control mb-2" placeholder="Amount...">
           <select id="amountTypeSelect" class="form-select mb-2">
             <option value="none">...</option>

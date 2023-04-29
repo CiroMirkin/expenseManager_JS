@@ -79,12 +79,12 @@ export default class AccountView {
         )).join('')
     }
     ShowEmptyIncomeList() {
-        document.getElementById('incomeList').innerHTML = `<li class="list-group-item mb-1 border border-primary-subtle">
+        document.getElementById('incomeList').innerHTML = `<li class="list-group-item mb-1 border border-primary-subtle animate__animated animate__fadeInUp">
             <header class="d-flex justify-content-between align-items-center">There're no incomes.</header>
         </li>`
     }
     ShowEmptyExpenseList() {
-        document.getElementById('expenseList').innerHTML = `<li class="list-group-item mb-1 border border-danger-subtle">
+        document.getElementById('expenseList').innerHTML = `<li class="list-group-item mb-1 border border-danger-subtle animate__animated animate__fadeInUp">
             <header class="d-flex justify-content-between align-items-center">There're no expenses.</header>
         </li>`
     }
